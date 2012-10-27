@@ -463,17 +463,19 @@ static int wm8994_set_mic_path(struct snd_kcontrol *kcontrol,
 			break;
 		case 3:
 			wm8994_disable_rec_path(codec, wm8994->rec_path);
+			wm8994->mic_mute = 1;
 			return 0;
 		default:
 			return -EINVAL;
 	}
 
-	if(wm8994->codec_state & VOIP_CALL_ACTIVE)
+	if((wm8994->codec_state & VOIP_CALL_ACTIVE) && (wm8994->mic_mute == 0))
 	{
 		printk(SND_KERN_DEBUG "[WM8994] Stop the recording path setting in VoIP call\n");
 		return 0;
 	}
 
+	wm8994->mic_mute = 0;
 	audio_ctrl_mic_bias_gpio(codec, 'C');
 	wm8994->universal_mic_path[wm8994->rec_path](codec);
 
@@ -766,76 +768,87 @@ static int wm8994_set_codec_status(struct snd_kcontrol *kcontrol,
 
 	DEBUG_LOG("set_codec_status : control_data [%#X]", control_data);
 
-	switch(control_data)
-	{
-		// To remove pop up noise for Call.
-		case CMD_CALL_FLAG_CLEAR:
-			DEBUG_LOG("Call Flag is clear!!");
-			//wm8994->codec_state &= ~(CALL_ACTIVE);
-			break;
+	switch(control_data) {
+	// To remove pop up noise for Call.
+	case CMD_CALL_FLAG_CLEAR:
+		DEBUG_LOG("Call Flag is clear!!");
+		//wm8994->codec_state &= ~(CALL_ACTIVE);
+		break;
 
-		case CMD_CALL_END :
-			DEBUG_LOG("Call shutdown function forcely for call!!");
-			//wm8994->codec_state &= ~(CALL_ACTIVE);
-			//tempstream.stream = SNDRV_PCM_STREAM_PLAYBACK;
-			//wm8994_shutdown(&tempstream, codec_dai);
-			break;
+	case CMD_CALL_END :
+		DEBUG_LOG("Call shutdown function forcely for call!!");
+		//wm8994->codec_state &= ~(CALL_ACTIVE);
+		//tempstream.stream = SNDRV_PCM_STREAM_PLAYBACK;
+		//wm8994_shutdown(&tempstream, codec_dai);
+		break;
 
-		case CMD_CODEC_STANDBY :
-			DEBUG_LOG("Codec Standby is called!!");
-			wm8994->codec_state &= ~(PLAYBACK_ACTIVE);
-			wm8994->stream_state &= ~(PCM_STREAM_PLAYBACK);
-			break;
+	case CMD_CODEC_STANDBY :
+		DEBUG_LOG("Codec Standby is called!!");
+		wm8994->codec_state &= ~(PLAYBACK_ACTIVE);
+		wm8994->stream_state &= ~(PCM_STREAM_PLAYBACK);
+		break;
 
-		case CMD_CODEC_EMERGENCY_RECOVERY:
-			// hi99.an
-			// Below message must be printed - this case called in abnormal state only
-			//
-			printk(SND_KERN_DEBUG "[WM8994] CMD_CODEC_EMERGENCY_RECOVERY\n");
+	case CMD_CODEC_EMERGENCY_RECOVERY:
+		// hi99.an
+		// Below message must be printed - this case called in abnormal state only
+		//
+		printk(SND_KERN_DEBUG "[WM8994] CMD_CODEC_EMERGENCY_RECOVERY\n");
 
-			wm8994_write(codec, WM8994_SOFTWARE_RESET, 0x0000);
+		wm8994_write(codec, WM8994_SOFTWARE_RESET, 0x0000);
 
-			wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, ((0x3<<WM8994_VMID_SEL_SHIFT)|WM8994_BIAS_ENA));
-			mdelay(50);
-			wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, (WM8994_VMID_SEL_NORMAL|WM8994_BIAS_ENA));
+		wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, ((0x3<<WM8994_VMID_SEL_SHIFT)|WM8994_BIAS_ENA));
+		mdelay(50);
+		wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, (WM8994_VMID_SEL_NORMAL|WM8994_BIAS_ENA));
 
-			wm8994_write(codec, WM8994_OVERSAMPLING, 0x0000);
+		wm8994_write(codec, WM8994_OVERSAMPLING, 0x0000);
 
-			/* MUST EXECUTE THIS SEQUENCE HERE */
-			// wm8994_set_dai_fmt()
-			wm8994_write(codec,0x300, 0x4010);
-			wm8994_write(codec,0x302, 0x7000);
-			wm8994_write(codec,0x301, 0x4000);
-			// configure_clock()
-			wm8994_write(codec,0x200, 0x0000);
-			wm8994_write(codec,0x221, 0x0700);
-			wm8994_write(codec,0x222, 0x86C2);
-			wm8994_write(codec,0x224, 0x0C88);
-			wm8994_write(codec,0x223, 0x00E0);
-			wm8994_write(codec,0x220, 0x0005);
-			wm8994_write(codec,0x200, 0x0011);
-			wm8994_write(codec,0x208, 0x000A);
-			wm8994_write(codec,0x210, 0x0073);
-			wm8994_write(codec,0x300, 0x4010);
-			DEBUG_LOG(" INITIALIZE ***** RECOVERY *****");
+		/* MUST EXECUTE THIS SEQUENCE HERE */
+		// wm8994_set_dai_fmt()
+		wm8994_write(codec,0x300, 0x4010);
+		wm8994_write(codec,0x302, 0x7000);
+		wm8994_write(codec,0x301, 0x4000);
+		// configure_clock()
+		wm8994_write(codec,0x200, 0x0000);
+		wm8994_write(codec,0x221, 0x0700);
+		wm8994_write(codec,0x222, 0x86C2);
+		wm8994_write(codec,0x224, 0x0C88);
+		wm8994_write(codec,0x223, 0x00E0);
+		wm8994_write(codec,0x220, 0x0005);
+		wm8994_write(codec,0x200, 0x0011);
+		wm8994_write(codec,0x208, 0x000A);
+		wm8994_write(codec,0x210, 0x0073);
+		wm8994_write(codec,0x300, 0x4010);
+		DEBUG_LOG(" INITIALIZE ***** RECOVERY *****");
 
-			printk(SND_KERN_DEBUG "[WM8994] CMD_CODEC_EMERGENCY_RECOVERY done.\n");
-			break;
+		printk(SND_KERN_DEBUG "[WM8994] CMD_CODEC_EMERGENCY_RECOVERY done.\n");
+		break;
 
-		case CMD_VOIP_NO_NXP_ON:
-			printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_NO_NXP_ON\n");
-			wm8994->voip_no_nxp_on = 1;
-			printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_no_nxp_on = %d\n", wm8994->voip_no_nxp_on);
-			break;
+	case CMD_VOIP_NO_NXP_ON:
+		printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_NO_NXP_ON\n");
+		wm8994->voip_nxp_ctrl = 2;
+		printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_nxp_ctrl = %d\n", wm8994->voip_nxp_ctrl);
+		break;
 
-		case CMD_VOIP_NO_NXP_OFF:
-			printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_NO_NXP_OFF\n");
-			wm8994->voip_no_nxp_on = 0;
-			printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_no_nxp_on = %d\n", wm8994->voip_no_nxp_on);
-			break;
+	case CMD_VOIP_NO_NXP_OFF:
+		printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_NO_NXP_OFF\n");
+		wm8994->voip_nxp_ctrl = 0;
+		printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_nxp_ctrl = %d\n", wm8994->voip_nxp_ctrl);
+		break;
 
-		default :
-			break;
+	case CMD_VOIP_GTALK_ON:
+		printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_GTALK_ON\n");
+		wm8994->voip_nxp_ctrl = 1; // GTALK
+		printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_nxp_ctrl = %d\n", wm8994->voip_nxp_ctrl);
+		break;
+
+	case CMD_VOIP_GTALK_OFF:
+		printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_GTALK_OFF\n");
+		wm8994->voip_nxp_ctrl = 0;
+		printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_nxp_ctrl = %d\n", wm8994->voip_nxp_ctrl);
+		break;
+
+	default :
+		break;
 	}
 
 	return 0;
@@ -895,7 +908,7 @@ static const DECLARE_TLV_DB_LINEAR(digital_tlv_mic, -7162, 7162);
 static const struct soc_enum path_control_enum[] = {
 	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(playback_path), playback_path),
 	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(voicecall_path), voicecall_path),
-	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(voipcall_path),voipcall_path),
+	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(voipcall_path), voipcall_path),
 	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(mic_path), mic_path),
 	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(input_source_state), input_source_state),
 	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(codec_tuning_control), codec_tuning_control),
@@ -1017,8 +1030,8 @@ static int configure_clock(struct snd_soc_codec *codec)
 
 			// Enable clocks to the Audio core and sysclk of wm8994
 			reg = wm8994_read(codec, WM8994_CLOCKING_1);
-			reg &= ~(WM8994_SYSCLK_SRC_MASK | WM8994_DSP_FSINTCLK_ENA_MASK|WM8994_DSP_FS1CLK_ENA_MASK);
-			reg |= (WM8994_DSP_FS1CLK_ENA | WM8994_DSP_FSINTCLK_ENA);
+			reg &= ~(WM8994_SYSCLK_SRC_MASK|WM8994_DSP_FSINTCLK_ENA_MASK|WM8994_DSP_FS1CLK_ENA_MASK);
+			reg |= (WM8994_DSP_FS1CLK_ENA|WM8994_DSP_FSINTCLK_ENA);
 			wm8994_write(codec, WM8994_CLOCKING_1, reg);
 			break;
 
@@ -1433,7 +1446,7 @@ static int wm8994_startup(struct snd_pcm_substream *substream, struct snd_soc_da
 		msleep(50);//mdelay(50);
 		wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, (WM8994_VMID_SEL_NORMAL|WM8994_BIAS_ENA));
 
-		wm8994_write(codec,WM8994_OVERSAMPLING, 0x0000);
+		wm8994_write(codec, WM8994_OVERSAMPLING, 0x0000);
 
 		/* MUST EXECUTE THIS SEQUENCE HERE */
 		// wm8994_set_dai_fmt()
@@ -1452,8 +1465,9 @@ static int wm8994_startup(struct snd_pcm_substream *substream, struct snd_soc_da
 		wm8994_write(codec,0x210, 0x0073);
 		wm8994_write(codec,0x300, 0x4010);
 		DEBUG_LOG(" INITIALIZE ***** START UP *****");
-	} else
+	} else {
 		DEBUG_LOG("Codec already turned on!!");
+	}
 
 	return 0;
 }
@@ -1508,7 +1522,6 @@ static void wm8994_shutdown(struct snd_pcm_substream *substream, struct snd_soc_
 			// Normal path is set after call end.
 			//wm8994_write(codec,WM8994_AIF1_DAC1_FILTERS_1, WM8994_AIF1DAC1_MUTE);  	//AIF1DAC1 mute
 		} else {
-			//wm8994_disable_path(codec);
 			wm8994_disable_playback_path(codec, wm8994->cur_path);
 			wm8994->codec_state &= ~(PLAYBACK_ACTIVE);
 			wm8994->cur_path = OFF;
@@ -3197,7 +3210,8 @@ static int wm8994_init(struct wm8994_priv *wm8994_private,
 	wm8994->power_state = CODEC_OFF;
 	wm8994->input_source = DEFAULT;
 	wm8994->pdata = pdata;
-	wm8994->voip_no_nxp_on = 0;
+	wm8994->voip_nxp_ctrl = 0;
+	wm8994->mic_mute = 0;
 
 	wm8994_write(codec, WM8994_SOFTWARE_RESET, 0x0000);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, ((0x3<<WM8994_VMID_SEL_SHIFT)|WM8994_BIAS_ENA));
@@ -3383,8 +3397,9 @@ static int wm8994_probe(struct platform_device *pdev)
 	wm8994_socdev = socdev;
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
-	if (setup->i2c_address)
+	if (setup->i2c_address) {
 		ret = wm8994_add_i2c_device(pdev, setup);
+	}
 #else
 	/* Add other interfaces here */
 #endif

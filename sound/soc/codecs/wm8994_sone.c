@@ -45,7 +45,12 @@
 #define TUNING_VOIP_RCV_OPGAL_VOL               0x3C // 20h // [DL08-1435] VoIP 0x3C (+3dB)
 #define TUNING_VOIP_RCV_OPGAR_VOL               0x3C // 21h //
 
-// VoIP No Nxp Call
+// VoIP GTalk Call (nxp_ctrl 1, NXP On)
+#define TUNING_VOIP_GTALK_RCV_AIF1DAC_BOOST     0x01 // 301h // [VF25-0910]
+#define TUNING_VOIP_GTALK_RCV_OPGAL_VOL         0x3C // 20h // [VF25-0910] VoIP 0x3C (+3dB)
+#define TUNING_VOIP_GTALK_RCV_OPGAR_VOL         0x3C // 21h //
+
+// VoIP No Nxp Call (nxp_ctrl 2)
 #define TUNING_VOIP_NONXP_RCV_AIF1DAC_BOOST     0x01 // 301h // [VF14-1816]
 #define TUNING_VOIP_NONXP_RCV_OPGAL_VOL         0x3E // 20h // [VF22-1651] VoIP 0x3E (+5dB)
 #define TUNING_VOIP_NONXP_RCV_OPGAR_VOL         0x3E // 21h //
@@ -76,19 +81,26 @@
 #define TUNING_MP3_EXTRA_DOCK_SPK_VOL           0x00 // 1Eh
 
 // Voice Call
-#define TUNING_CALL_OUTPUTL_VOL                 0x33 // 1Ch // 0x30 (-12dB) // H/W Req.
+#define TUNING_CALL_OUTPUTL_VOL                 0x33 // 1Ch // 0x33 (-6dB)
 #define TUNING_CALL_OUTPUTR_VOL                 0x33 // 1Dh
 #define TUNING_CALL_OPGAL_VOL                   0x39 // 20h
 #define TUNING_CALL_OPGAR_VOL                   0x39 // 21h
 
 // VoIP Call (3pole/4pole)
-#define TUNING_VOIP_EAR_OUTPUTL_VOL             0x34 // 1Ch // [DL08-1435] VoIP 0x34 (-5dB) // H/W Req.
-#define TUNING_VOIP_EAR_OUTPUTR_VOL             0x34 // 1Dh // [DL08-1435] VoIP 0x34 (-5dB)
+#define TUNING_VOIP_EAR_OUTPUTL_VOL             0x34 // 1Ch // [DL08-1435] VoIP 0x34 (-5dB)
+#define TUNING_VOIP_EAR_OUTPUTR_VOL             0x34 // 1Dh //
 #define TUNING_VOIP_EAR_OPGAL_VOL               0x39 // 20h // [DL08-1435] VoIP 0x39 (0dB)
-#define TUNING_VOIP_EAR_OPGAR_VOL               0x39 // 21h // [DL08-1435] VoIP 0x39 (0dB)
+#define TUNING_VOIP_EAR_OPGAR_VOL               0x39 // 21h //
 #define TUNING_VOIP_EAR_AIF1DAC_BOOST           0x00 // 301h // [DL08-1435] VoIP 0x00 (0dB)
 
-// VoIP No Nxp Call (3pole/4pole)
+// VoIP GTalk Call (nxp_ctrl 1, NXP On)
+#define TUNING_VOIP_GTALK_EAR_OUTPUTL_VOL       0x34 // 1Ch // [VF25-0910] VoIP 0x34 (-5dB)
+#define TUNING_VOIP_GTALK_EAR_OUTPUTR_VOL       0x34 // 1Dh //
+#define TUNING_VOIP_GTALK_EAR_OPGAL_VOL         0x39 // 20h // [VF25-0910] VoIP 0x39 (0dB)
+#define TUNING_VOIP_GTALK_EAR_OPGAR_VOL         0x39 // 21h //
+#define TUNING_VOIP_GTALK_EAR_AIF1DAC_BOOST     0x00 // 301h // [VF25-0910] VoIP 0x00 (0dB)
+
+// VoIP No Nxp Call (nxp_ctrl 2)(3pole/4pole)
 #define TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL       0x39 // 1Ch // [VF22-1651] VoIP 0x39 (0dB)
 #define TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL       0x39 // 1Dh //
 #define TUNING_VOIP_NONXP_EAR_OPGAL_VOL         0x39 // 20h // [VF14-1816] VoIP 0x39 (0dB)
@@ -116,8 +128,13 @@
 #define TUNING_VOIP_CLASSD_VOL                  0x06 // 25h // [DL08-1435] 0x06 (+9dB)
 #define TUNING_VOIP_SPK_AIF1DAC_BOOST           0x01 // 301h // [DL08-1435] 0x01 (+6dB)
 
-// VoIP No Nxp Call
-#define TUNING_VOIP_NONXP_SPKL_VOL              0x3A // 26h // [VF22-1651] 0x3A (+1dB)
+// VoIP GTalk Call (nxp_ctrl 1, NXP On)
+#define TUNING_VOIP_GTALK_SPKL_VOL              0x3C // 26h // [VF25-0910] 0x3C (+3dB)
+#define TUNING_VOIP_GTALK_CLASSD_VOL            0x06 // 25h // [VF25-0910] 0x06 (+9dB)
+#define TUNING_VOIP_GTALK_SPK_AIF1DAC_BOOST     0x01 // 301h // [VF25-0910] 0x01 (+6dB)
+
+// VoIP No Nxp Call (nxp_ctrl 2)
+#define TUNING_VOIP_NONXP_SPKL_VOL              0x39 // 26h // [VF22-2001] 0x39 (+0dB)
 #define TUNING_VOIP_NONXP_CLASSD_VOL            0x06 // 25h // [VF14-1816] 0x06 (+9dB)
 #define TUNING_VOIP_NONXP_SPK_AIF1DAC_BOOST     0x01 // 301h // [VF14-1816] 0x01 (+6dB)
 
@@ -158,7 +175,20 @@
 #define TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL        0xCD // 400h // [DL24-1836] VoIP 0xCD (+4.875dB)
 #define TUNING_VOIP_MAIN_3P_AIF1ADCR_VOL        0xCD // 401h
 
-// VoIP No Nxp Call (RCV/SPK/3Pole)
+// VoIP GTalk Call (nxp_ctrl 1, NXP On)
+#define TUNING_VOIP_GTALK_RCV_INPUTMIX_VOL      0x15 // 18h // [VF25-0910] VoIP 0x15 (+15.0dB)
+#define TUNING_VOIP_GTALK_MAIN_RCV_AIF1ADCL_VOL 0xDA // 400h // [VF25-0910] VoIP 0xDA (+9.750dB)
+#define TUNING_VOIP_GTALK_MAIN_RCV_AIF1ADCR_VOL 0xDA // 401h
+
+#define TUNING_VOIP_GTALK_SPK_INPUTMIX_VOL      0x17 // 18h // [VF25-0910] VoIP 0x17 (+18.0dB)
+#define TUNING_VOIP_GTALK_MAIN_SPK_AIF1ADCL_VOL 0xCD // 400h // [VF25-0910] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_GTALK_MAIN_SPK_AIF1ADCR_VOL 0xCD // 401h
+
+#define TUNING_VOIP_GTALK_3P_INPUTMIX_VOL       0x17 // 18h // [VF25-0910] VoIP 0x17 (+18.0dB)
+#define TUNING_VOIP_GTALK_MAIN_3P_AIF1ADCL_VOL  0xCD // 400h // [VF25-0910] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_GTALK_MAIN_3P_AIF1ADCR_VOL  0xCD // 401h
+
+// VoIP No Nxp Call (nxp_ctrl 2)(RCV/SPK/3Pole)
 #define TUNING_VOIP_NONXP_RCV_INPUTMIX_VOL      0x15 // 18h // [VF14-1816] VoIP 0x15 (+15.0dB)
 #define TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCL_VOL 0xDA // 400h // [VF14-1816] VoIP 0xDA (+9.750dB)
 #define TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCR_VOL 0xDA // 401h
@@ -190,9 +220,14 @@
 #define TUNING_VOIP_EAR_AIF1ADCL_VOL            0xE7 // 400h // [DL24-1836] VoIP 0xE7 (+14.625dB)
 #define TUNING_VOIP_EAR_AIF1ADCR_VOL            0xE7 // 401h
 
-// VoIP No Nxp Call (4Pole)
+// VoIP GTalk Call (nxp_ctrl 1, NXP On)(4Pole)
+#define TUNING_VOIP_GTALK_EAR_INPUTMIX_VOL      0x15 // 1Ah // [VF25-0910] VoIP 0x15 (+15.0dB)
+#define TUNING_VOIP_GTALK_EAR_AIF1ADCL_VOL      0xE7 // 400h // [VF25-0910] VoIP 0xE7 (+14.625dB)
+#define TUNING_VOIP_GTALK_EAR_AIF1ADCR_VOL      0xE7 // 401h
+
+// VoIP No Nxp Call (nxp_ctrl 2)(4Pole)
 #define TUNING_VOIP_NONXP_EAR_INPUTMIX_VOL      0x15 // 1Ah // [VF14-1816] VoIP 0x15 (+15.0dB)
-#define TUNING_VOIP_NONXP_EAR_AIF1ADCL_VOL      0xE7 // 400h // [VF14-1816] VoIP 0xE5 (+14.625dB)
+#define TUNING_VOIP_NONXP_EAR_AIF1ADCL_VOL      0xE7 // 400h // [VF14-1816] VoIP 0xE7 (+14.625dB)
 #define TUNING_VOIP_NONXP_EAR_AIF1ADCR_VOL      0xE7 // 401h
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -270,7 +305,6 @@ int audio_power(int en, int check)
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R03, 1);
 			} else {
 				s3c_gpio_cfgpin(GPIO_CODEC_XTAL_EN_R04, S3C_GPIO_OUTPUT);
-				//s3c_gpio_setpin(GPIO_CODEC_XTAL_EN_R04, 1);
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R04, 1);
 			}
 		} else {
@@ -281,7 +315,6 @@ int audio_power(int en, int check)
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R03, 0);
 			} else {
 				s3c_gpio_cfgpin(GPIO_CODEC_XTAL_EN_R04, S3C_GPIO_OUTPUT);
-				//s3c_gpio_setpin(GPIO_CODEC_XTAL_EN_R04, 0);
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R04, 0);
 			}
 		}
@@ -439,8 +472,7 @@ void wm8994_disable_playback_path(struct snd_soc_codec *codec, enum audio_path p
 
 	DEBUG_LOG("Path = [%d]", path);
 
-	switch(path)
-	{
+	switch(path) {
 		case RCV:
 			// 01H // HPOUT2_ENA off
 			val = wm8994_read(codec, WM8994_POWER_MANAGEMENT_1);
@@ -546,8 +578,7 @@ void wm8994_disable_playback_path(struct snd_soc_codec *codec, enum audio_path p
 			break;
 #endif
 		case SPK_HP :
-			if(wm8994->codec_state & VOICE_CALL_ACTIVE)
-			{
+			if(wm8994->codec_state & VOICE_CALL_ACTIVE) {
 				val = wm8994_read(codec, WM8994_POWER_MANAGEMENT_1);
 				val &= ~(WM8994_HPOUT1L_ENA_MASK|WM8994_HPOUT1R_ENA_MASK|WM8994_SPKOUTL_ENA_MASK);
 				wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, val);
@@ -614,20 +645,17 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 
 	//audio_ctrl_mic_bias_gpio(codec);
 
-	switch(rec_path)
-	{
+	switch(rec_path) {
 		case MAIN:
 			DEBUG_LOG("disable MAIN MIC path...\n");
 
-			if (wm8994->codec_state & (CALL_ACTIVE))
-			{
+			if (wm8994->codec_state & (CALL_ACTIVE)) {
 				// 02H // Disable IN1L_ENA, MIXINL_ENA
 				//val = wm8994_read(codec, WM8994_POWER_MANAGEMENT_2);
 				//val &= ~(WM8994_IN1L_ENA_MASK|WM8994_MIXINL_ENA_MASK);
 				//wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-				if(!wm8994->testmode_config_flag)
-				{
+				if(!wm8994->testmode_config_flag) {
 					// 18H // Mute IN1L_VOL
 					//val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 					//val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
@@ -645,8 +673,7 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 				//val &= (WM8994_IN1LN_TO_IN1L_MASK|WM8994_IN1LP_TO_IN1L_MASK);
 				//wm8994_write(codec, WM8994_INPUT_MIXER_2, val);
 
-				if(wm8994->codec_state & (VOIP_CALL_ACTIVE))
-				{
+				if(wm8994->codec_state & (VOIP_CALL_ACTIVE)) {
 					printk(SND_KERN_DEBUG "[WM8994] turn off hpf in voip main mic...\n");
 #ifdef FEATURE_VOIP_DRC
 	if this code enabled, build error
@@ -679,17 +706,13 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 				val = wm8994_read(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING);
 				val &= ~(WM8994_ADC1R_TO_AIF1ADC1R_MASK);
 				wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING, val);
-
-			}
-			else // normal
-			{
+			} else {
 				// 02H // Disable IN1L_ENA, MIXINL_ENA
 				val = wm8994_read(codec, WM8994_POWER_MANAGEMENT_2);
 				val &= ~(WM8994_IN1L_ENA_MASK|WM8994_MIXINL_ENA_MASK);
 				wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-				if(!wm8994->testmode_config_flag)
-				{
+				if(!wm8994->testmode_config_flag) {
 					// 18H // Mute IN1L_VOL
 					val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 					val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
@@ -735,8 +758,7 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 		case EAR:
 			DEBUG_LOG("disable EAR MIC path...\n");
 
-			if (wm8994->codec_state & (CALL_ACTIVE))
-			{
+			if (wm8994->codec_state & (CALL_ACTIVE)) {
 				printk(SND_KERN_DEBUG "[WM8994] disable ear mic - in call\n");
 
 				// 02H // Disable MIXINR_ENA
@@ -745,8 +767,7 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 				val &= ~(WM8994_MIXINR_ENA_MASK);
 				wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-				if(!wm8994->testmode_config_flag)
-				{
+				if(!wm8994->testmode_config_flag) {
 					// 1AH // Mute IN1R_VOL
 					//val = wm8994_read(codec, WM8994_RIGHT_LINE_INPUT_1_2_VOLUME);
 					//val &= ~(WM8994_IN1R_MUTE_MASK|WM8994_IN1R_VOL_MASK);
@@ -764,8 +785,7 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 				//val &= ~(WM8994_IN1RN_TO_IN1R_MASK|WM8994_IN1RP_TO_IN1R_MASK);
 				//wm8994_write(codec, WM8994_INPUT_MIXER_2, val);
 
-				if(wm8994->codec_state & (VOIP_CALL_ACTIVE))
-				{
+				if(wm8994->codec_state & (VOIP_CALL_ACTIVE)) {
 					printk(SND_KERN_DEBUG "[WM8994] turn off hpf in voip ear mic...\n");
 #ifdef FEATURE_VOIP_DRC
 	if this code enabled, build error
@@ -799,9 +819,7 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 				val = wm8994_read(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING);
 				val &= ~(WM8994_ADC1R_TO_AIF1ADC1R_MASK);
 				wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING, val);
-			}
-			else
-			{
+			} else {
 				printk(SND_KERN_DEBUG "[WM8994] disable ear mic - normal\n");
 
 				// 02H // Disable MIXINR_ENA
@@ -841,8 +859,7 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 			break;
 #if 0
 		case BT_REC:
-			if(wm8994->codec_state & CALL_ACTIVE)
-			{
+			if(wm8994->codec_state & CALL_ACTIVE) {
 				// 02H //
 				val = wm8994_read(codec, WM8994_POWER_MANAGEMENT_2);
 				val &= ~(WM8994_MIXINL_ENA_MASK|WM8994_MIXINR_ENA_MASK);
@@ -891,8 +908,18 @@ void wm8994_record_headset_mic(struct snd_soc_codec *codec)
 
 	u16 val;
 
-	if (wm8994->codec_state & (VOICE_CALL_ACTIVE))
-	{
+	if (wm8994->codec_state & (VOIP_CALL_ACTIVE)) {
+		switch(wm8994->cur_path) {
+		case HP:
+			printk(SND_KERN_DEBUG "[WM8994] VOIP_CALL_ACTIVE with HP MIC\n");
+			wm8994_set_voipcall_headset_mic(codec);
+			break;
+		default:
+			printk(SND_KERN_DEBUG "[WM8994] VOIP_CALL_ACTIVE with Default HP MIC\n");
+			wm8994_set_voipcall_headset_mic(codec);
+			break;
+		}
+	} else if (wm8994->codec_state & (VOICE_CALL_ACTIVE)) {
 		DEBUG_LOG("[WM8994] recording ear mic(in voicecall)");
 
 		// 300H // copy AIF1ADCR_SRC data to AIF1ADCL_SRC // val: 0x0010
@@ -952,9 +979,7 @@ void wm8994_record_headset_mic(struct snd_soc_codec *codec)
 		val &= ~(WM8994_ADC1R_TO_AIF1ADC1R_MASK);
 		val |= (WM8994_ADC1R_TO_AIF1ADC1R);
 		wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING, val);
-	}
-	else
-	{
+	} else {
 		DEBUG_LOG("[WM8994] recording ear mic(normal)");
 
 		// 300H // copy AIF1ADCR_SRC data to AIF1ADCL_SRC // val: 0x0010
@@ -981,8 +1006,7 @@ void wm8994_record_headset_mic(struct snd_soc_codec *codec)
 		val |= (WM8994_MIXINR_ENA|WM8994_IN1R_ENA);
 		wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-		if(!wm8994->testmode_config_flag)
-		{
+		if(!wm8994->testmode_config_flag) {
 			// 1AH // IN1R PGA // IN1R UNMUTE, SET VOL
 			val = wm8994_read(codec, WM8994_RIGHT_LINE_INPUT_1_2_VOLUME);
 			val &= ~(WM8994_IN1R_MUTE_MASK|WM8994_IN1R_VOL_MASK);
@@ -1031,8 +1055,26 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 
 	u16 val;
 
-	if (wm8994->codec_state & (VOICE_CALL_ACTIVE))
-	{
+	if (wm8994->codec_state & (VOIP_CALL_ACTIVE)) {
+		switch(wm8994->cur_path) {
+		case RCV:
+			printk(SND_KERN_DEBUG "[WM8994] VOIP_CALL_ACTIVE with RCV MIC\n");
+			wm8994_set_voipcall_receiver_mic(codec);
+			break;
+		case SPK:
+			printk(SND_KERN_DEBUG "[WM8994] VOIP_CALL_ACTIVE with SPK MIC\n");
+			wm8994_set_voipcall_speaker_mic(codec);
+			break;
+		case HP_NO_MIC: // 3POLE
+			printk(SND_KERN_DEBUG "[WM8994] VOIP_CALL_ACTIVE with HP_NO_MIC MIC\n");
+			wm8994_set_voipcall_headphone_mic(codec);
+			break;
+		default:
+			printk(SND_KERN_DEBUG "[WM8994] VOIP_CALL_ACTIVE with Default RCV MIC\n");
+			wm8994_set_voipcall_receiver_mic(codec);
+			break;
+		}		
+	} else if (wm8994->codec_state & (VOICE_CALL_ACTIVE)) {
 		DEBUG_LOG("[WM8994] recording main mic(in voicecall)");
 
 		// 300H // copy AIF1ADCL_SRC data to AIF1ADCR_SRC // val: 0x0010
@@ -1058,8 +1100,7 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 		val |= (WM8994_MIXINL_ENA|WM8994_MIXINR_ENA|WM8994_IN1L_ENA);
 		wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-		if(!wm8994->testmode_config_flag)
-		{
+		if(!wm8994->testmode_config_flag) {
 			// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 			val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 			val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
@@ -1097,9 +1138,7 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 		val &= ~(WM8994_ADC1R_TO_AIF1ADC1R_MASK);
 		val |= (WM8994_ADC1R_TO_AIF1ADC1R);
 		wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING, val);
-	}
-	else
-	{
+	} else {
 		DEBUG_LOG("[WM8994] recording main mic(normal)");
 
 		// 300H // copy AIF1ADCL_SRC data to AIF1ADCR_SRC // val: 0x0010
@@ -1125,8 +1164,7 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 		val |= (WM8994_MIXINL_ENA|WM8994_IN1L_ENA);
 		wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-		if(!wm8994->testmode_config_flag)
-		{
+		if(!wm8994->testmode_config_flag) {
 			// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 			val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 			val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
@@ -1146,8 +1184,7 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 			wm8994_write(codec, WM8994_INPUT_MIXER_3, val);
 		}
 
-		if(wm8994->input_source == RECOGNITION)
-		{
+		if(wm8994->input_source == RECOGNITION) {
 			// Voice Search Tuning
 			// 400H // AIF1 ADC1 Left Volume
 			val = wm8994_read(codec, WM8994_AIF1_ADC1_LEFT_VOLUME);
@@ -1162,8 +1199,7 @@ void wm8994_record_main_mic(struct snd_soc_codec *codec)
 		val |= (WM8994_IN1LP_TO_IN1L|WM8994_IN1LN_TO_IN1L);
 		wm8994_write(codec, WM8994_INPUT_MIXER_2, val);
 
-		if(wm8994->input_source == RECOGNITION)
-		{
+		if(wm8994->input_source == RECOGNITION) {
 			// 410H // AIF1 ADC1 Filters // AIF1 ADC1 hi-path filter on
 			val = wm8994_read(codec, WM8994_AIF1_ADC1_FILTERS);
 			val &= ~(WM8994_AIF1ADC1L_HPF|WM8994_AIF1ADC1R_HPF);
@@ -1193,8 +1229,7 @@ void wm8994_record_bluetooth_mic(struct snd_soc_codec *codec)
 
 	u16 val;
 
-	if (wm8994->codec_state & (CALL_ACTIVE))
-	{
+	if (wm8994->codec_state & (CALL_ACTIVE)) {
 		DEBUG_LOG("[WM8994] recording bt mic(in call)");
 
 		// 01H // VMID_SEL_NORMAL, BIAS_ENA, MICB1_ENA
@@ -1229,9 +1264,7 @@ void wm8994_record_bluetooth_mic(struct snd_soc_codec *codec)
 		val &= ~(WM8994_AIF2DACR_TO_AIF1ADC1R_MASK|WM8994_ADC1R_TO_AIF1ADC1R_MASK);
 		val |= (WM8994_AIF2DACR_TO_AIF1ADC1R|WM8994_ADC1R_TO_AIF1ADC1R);
 		wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING, val);
-	}
-	else
-	{
+	} else {
 		DEBUG_LOG("[WM8994] recording bt mic(normal)");
 	}
 
@@ -1323,8 +1356,7 @@ void wm8994_set_playback_receiver(struct snd_soc_codec *codec)
 
 	DEBUG_LOG("");
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// 31H // DAC1L_MIXOUTL_VOL set
 	    val = wm8994_read(codec, WM8994_OUTPUT_MIXER_5);
 		val &= ~(WM8994_DACL_MIXOUTL_VOL_MASK);
@@ -1490,8 +1522,7 @@ void wm8994_set_playback_headset(struct snd_soc_codec *codec)
 	val |= (0x0005);
 	wm8994_write(codec, WM8994_CLASS_W_1, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// 1CH // HPOUT1L_VOL set
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
@@ -1666,8 +1697,7 @@ void wm8994_set_playback_speaker(struct snd_soc_codec *codec)
 	val |= (WM8994_SPKLVOL_ENA);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_3, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// 22H // SPKMIXL_VOL set (max 0dB)
 		val = wm8994_read(codec, WM8994_SPKMIXL_ATTENUATION);
 		val &= ~(WM8994_SPKMIXL_VOL_MASK);
@@ -1796,8 +1826,7 @@ void wm8994_set_playback_speaker_headset(struct snd_soc_codec *codec)
 	//------------------  Speaker Path Settings ------------------
 
 	// Speaker Volume Control
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_SPEAKER_VOLUME_LEFT);
 		val &= ~(WM8994_SPKOUTL_MUTE_N_MASK|WM8994_SPKOUTL_VOL_MASK);
 		val |= (WM8994_SPKOUTL_MUTE_N|TUNING_MP3_SPKL_VOL);
@@ -1849,8 +1878,7 @@ void wm8994_set_playback_speaker_headset(struct snd_soc_codec *codec)
 	val = (0x0005);
 	wm8994_write(codec, WM8994_CLASS_W_1, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
 		val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_DUAL_OUTPUTL_VOL);
@@ -1942,8 +1970,7 @@ void wm8994_set_playback_speaker_headset(struct snd_soc_codec *codec)
 		WM8994_HPOUT1R_OUTP|WM8994_HPOUT1R_DLY);
 	wm8994_write(codec, WM8994_ANALOGUE_HP_1, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		//Unmute DAC1 left
 		val = wm8994_read(codec, WM8994_DAC1_LEFT_VOLUME);
 		val &= ~(WM8994_DAC1L_MUTE_MASK|WM8994_DAC1L_VOL_MASK);
@@ -1964,8 +1991,7 @@ void wm8994_set_playback_speaker_headset(struct snd_soc_codec *codec)
 	val |= (WM8994_AIF1DAC1_UNMUTE|WM8994_AIF1DAC1_MONO);
 	wm8994_write(codec, WM8994_AIF1_DAC1_FILTERS_1, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// Unmute the SPKMIXVOLUME
 		val = wm8994_read(codec, WM8994_SPKMIXL_ATTENUATION);
 		val &= ~(WM8994_SPKMIXL_VOL_MASK);
@@ -1994,8 +2020,7 @@ void wm8994_set_playback_extra_dock_speaker(struct snd_soc_codec *codec)
 	val &= ~(WM8994_LINEOUT2N_ENA_MASK|WM8994_LINEOUT2P_ENA_MASK);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_3, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
         val = wm8994_read(codec, WM8994_OUTPUT_MIXER_5);
 		val &= ~(WM8994_DACL_MIXOUTL_VOL_MASK);
         val |= (TUNING_EXTRA_DOCK_SPK_OUTMIX5_VOL<<WM8994_DACL_MIXOUTL_VOL_SHIFT);
@@ -2143,8 +2168,7 @@ void wm8994_set_voicecall_receiver(struct snd_soc_codec *codec)
 	wm8994_write(codec,0x601, 0x0001); // AIF1DAC1L_TO_DAC1L
 	wm8994_write(codec,0x602, 0x0001); // AIF1DAC1R_TO_DAC1R
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		/* ANALOG INPUT PATH */
 		wm8994_write(codec, 0x1A, 0x018B); // IN1RN/P(EAR_MIC_P/N) DISABLE // 0x0B(0.0dB)
 		wm8994_write(codec, 0x18, 0x010B); // IN1LN/P(MAIN_MIC_P/N) // 0x0B(0.0dB)
@@ -2219,8 +2243,7 @@ void wm8994_set_voicecall_headset(struct snd_soc_codec *codec)
 	val |= (WM8994_IN1L_VU|WM8994_IN1L_MUTE|TUNING_CALL_EAR_INPUTMIX_VOL);
 	wm8994_write(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_RIGHT_LINE_INPUT_1_2_VOLUME); // IN1RN/P(EAR_MIC_P/N) // [DB16-2232] 0x0B(0.0dB) HW req.
 		val &= ~(WM8994_IN1R_MUTE_MASK|WM8994_IN1R_VOL_MASK); // Unmute IN1R
 		val |= (WM8994_IN1R_VU|TUNING_CALL_EAR_INPUTMIX_VOL);
@@ -2248,8 +2271,7 @@ void wm8994_set_voicecall_headset(struct snd_soc_codec *codec)
 	//wm8994_write(codec, 0x600, 0x0180); // Right
 
 	// Unmute
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
 		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_CALL_OPGAL_VOL);
@@ -2281,8 +2303,7 @@ void wm8994_set_voicecall_headset(struct snd_soc_codec *codec)
 	val |= 0x0005;
 	wm8994_write(codec, WM8994_CLASS_W_1, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
 		//val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_CALL_OUTPUTL_VOL);
@@ -2386,8 +2407,7 @@ void wm8994_set_voicecall_headphone(struct snd_soc_codec *codec)
 
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_4, 0x0001); // 04h // ADCR_ENA // test - DD24-0226
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME); // IN1LN/P(MAIN_MIC_P/N) // [DB16-2232] 0x0B(0.0dB) HW req.
 		val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK); // Unmute IN1L
 		val |= (WM8994_IN1L_VU|TUNING_CALL_SPK_INPUTMIX_VOL);
@@ -2414,8 +2434,7 @@ void wm8994_set_voicecall_headphone(struct snd_soc_codec *codec)
 	wm8994_write(codec, 0x600, 0x0180); // Right // test - DD24-0226
 
 	/* Unmute*/
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
 		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_CALL_OPGAL_VOL);
@@ -2449,8 +2468,7 @@ void wm8994_set_voicecall_headphone(struct snd_soc_codec *codec)
 	val |= 0x0005;
 	wm8994_write(codec, WM8994_CLASS_W_1, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
 		//val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_CALL_OUTPUTL_VOL);
@@ -2551,8 +2569,7 @@ void wm8994_set_voicecall_speaker(struct snd_soc_codec *codec)
 	//~code add
 	wm8994_write(codec, 0x28, 0x0030); // IN1LN/P(MAIN_MIC_P/N)_TO_IN1L // IN1LN/P(MAIN_MIC_P/N)_TO_IN1L, IN2RN/P_TO_IN2R (0x3C)
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// Volume Control - Input
 		val = wm8994_read(codec, WM8994_INPUT_MIXER_3); // IN1L_TO_MIXINL 0dB
 		val &= ~(WM8994_IN1L_TO_MIXINL_MASK|WM8994_IN1L_MIXINL_VOL_MASK|WM8994_MIXOUTL_MIXINL_VOL_MASK);
@@ -2576,8 +2593,7 @@ void wm8994_set_voicecall_speaker(struct snd_soc_codec *codec)
 
 	wm8994_write(codec, 0x2C, 0x0005); // IN2LRP_MIXINR_VOL[2:0] = b101 // RxVoice to MIXINR
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		wm8994_write(codec, 0x31, 0x0000); // MIXINR_MIXOUTL_VOL 0dB(0x0)
 		wm8994_write(codec, 0x32, 0x0000); // MIXINR_MIXOUTR_VOL 0dB(0x0)
 	}
@@ -2591,8 +2607,7 @@ void wm8994_set_voicecall_speaker(struct snd_soc_codec *codec)
 
 	wm8994_write(codec, 0x05, 0X0303); // AIF1DAC1L/R_ENA, DAC1L/R_ENA
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// Volume Control - Output
 		// Unmute the SPKMIXVOLUME
 		val = wm8994_read(codec, WM8994_SPKMIXL_ATTENUATION);
@@ -2643,8 +2658,7 @@ void wm8994_set_voicecall_speaker(struct snd_soc_codec *codec)
 
 	wm8994_write(codec, 0x01, WM8994_SPKOUTL_ENA|WM8994_VMID_SEL_NORMAL|WM8994_BIAS_ENA);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		//Unmute DAC1 left
 		val = wm8994_read(codec, WM8994_DAC1_LEFT_VOLUME);
 		val &= ~(WM8994_DAC1L_MUTE_MASK|WM8994_DAC1L_VOL_MASK);
@@ -2798,12 +2812,9 @@ void close_output_path_all(struct snd_soc_codec *codec)
 
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_3, 0x0000);
 
-	if (wm8994->cur_path == HP)
-	{
+	if (wm8994->cur_path == HP) {
 		wm8994_disable_rec_path(codec, 0);
-	}
-	else
-	{
+	} else {
 		// for ear tick noise reduction
 		// 01H // HPOUT1L/R_ENA off
 		val = wm8994_read(codec, WM8994_POWER_MANAGEMENT_1);
@@ -2813,19 +2824,23 @@ void close_output_path_all(struct snd_soc_codec *codec)
 		// 1CH // HPOUT1L_VOL mute
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTL_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_GTALK_EAR_OUTPUTL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OUTPUT_VOLUME, val);
 
 		// 1DH // HPOUT1R_VOL mute
 		val = wm8994_read(codec, WM8994_RIGHT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1R_MUTE_N_MASK|WM8994_HPOUT1R_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTR_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_GTALK_EAR_OUTPUTR_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OUTPUT_VOLUME, val);
 
 		// 2DH // DAC1L_TO_HPOUT1L, DAC1L_TO_MIXOUTL off
@@ -2868,7 +2883,6 @@ void close_output_path_all(struct snd_soc_codec *codec)
 void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 {
 	struct wm8994_priv *wm8994 = codec->drvdata;
-
 	u16 val;
 
     close_output_path_all(codec);
@@ -2887,18 +2901,22 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_RCV_OPGAL_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_GTALK_RCV_OPGAL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_RCV_OPGAL_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_RCV_OPGAL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OPGA_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTR_MUTE_N_MASK|WM8994_MIXOUTR_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_RCV_OPGAR_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_GTALK_RCV_OPGAL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_NONXP_RCV_OPGAR_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_RCV_OPGAR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OPGA_VOLUME, val);
 	}
 
@@ -2918,12 +2936,15 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_DAC1_RIGHT_VOLUME, val);
 
 	if(!wm8994->testmode_config_flag) {
+		// 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (TUNING_VOIP_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (TUNING_VOIP_GTALK_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
+		else if (wm8994->voip_nxp_ctrl == 2)
+			val |= (TUNING_VOIP_NONXP_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		else
-			val |= (TUNING_VOIP_NONXP_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+			val |= (TUNING_VOIP_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -2989,6 +3010,16 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	val |= (WM8994_BIAS_ENA|WM8994_VMID_SEL_NORMAL|WM8994_HPOUT2_ENA);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, val);
 
+	wm8994_set_voipcall_receiver_mic(codec);
+
+    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_receiver()\n");
+}
+
+void wm8994_set_voipcall_receiver_mic(struct snd_soc_codec *codec)
+{
+	struct wm8994_priv *wm8994 = codec->drvdata;
+	u16 val;
+
 	printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_receiver - rec main mic\n");
 
 	// 300H // Mixing left channel output to right channel // val: 0x0010
@@ -3017,10 +3048,12 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 		// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_IN1L_VU|TUNING_VOIP_RCV_INPUTMIX_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_GTALK_RCV_INPUTMIX_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_IN1L_VU|TUNING_VOIP_NONXP_RCV_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_RCV_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 29H // MIXINL PGA // IN2L_TO_MIXINL MUTE, IN1L_TO_MIXINL UNMUTE, 0dB
@@ -3034,10 +3067,12 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	// 400H // AIF1 ADC1 Left Volume // Gain Tuning // H/W req.
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_LEFT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1L_VOL_MASK);
-	if (wm8994->voip_no_nxp_on == 0)
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL); // ADC Digital Gain
+	if (wm8994->voip_nxp_ctrl == 1)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_GTALK_MAIN_RCV_AIF1ADCL_VOL);
+	else if (wm8994->voip_nxp_ctrl == 2)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCL_VOL);
 	else
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCL_VOL); // ADC Digital Gain
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL);
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1LP/N_TO_IN1L PGA
@@ -3075,14 +3110,11 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	val &= ~(WM8994_ADC1L_TO_AIF1ADC1L_MASK);
 	val |= (WM8994_ADC1L_TO_AIF1ADC1L);
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_MIXER_ROUTING, val);
-
-    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_receiver()\n");
 }
 
 void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 {
 	struct wm8994_priv *wm8994 = codec->drvdata;
-
 	u16 val;
 
     close_output_path_all(codec);
@@ -3132,34 +3164,42 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_GTALK_EAR_OUTPUTL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1R_MUTE_N_MASK|WM8994_HPOUT1R_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_GTALK_EAR_OUTPUTR_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_GTALK_EAR_OPGAL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAL_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OPGA_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTR_MUTE_N_MASK|WM8994_MIXOUTR_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_GTALK_EAR_OPGAL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAL_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OPGA_VOLUME, val);
 	}
 
@@ -3188,12 +3228,15 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	msleep(5);// 20ms delay
 
 	if(!wm8994->testmode_config_flag) {
+		// 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (TUNING_VOIP_GTALK_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
+		else if (wm8994->voip_nxp_ctrl == 2)
+			val |= (TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		else
-			val |= (TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+			val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -3276,7 +3319,18 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	val |= (WM8994_AIF1DAC1_UNMUTE);
 	wm8994_write(codec, WM8994_AIF1_DAC1_FILTERS_1, val);
 
+	wm8994_set_voipcall_headset_mic(codec);
+
+    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_headset()\n");
+}
+
+void wm8994_set_voipcall_headset_mic(struct snd_soc_codec *codec)
+{
+	struct wm8994_priv *wm8994 = codec->drvdata;
+	u16 val;
+
 	printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_headset - rec ear mic\n");
+
 	// 300H // Mixing left channel output to right channel // val: 0x0010
 	val = wm8994_read(codec, WM8994_AIF1_CONTROL_1);
 	val &= ~(WM8994_AIF1ADCL_SRC_MASK|WM8994_AIF1ADCR_SRC_MASK);
@@ -3304,10 +3358,12 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 		// 1AH // IN1R PGA // IN1R UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_RIGHT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1R_MUTE_MASK|WM8994_IN1R_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_IN1R_VU|TUNING_VOIP_EAR_INPUTMIX_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_IN1R_VU|TUNING_VOIP_GTALK_EAR_INPUTMIX_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_IN1R_VU|TUNING_VOIP_NONXP_EAR_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1R_VU|TUNING_VOIP_EAR_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_RIGHT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 2AH // MIXINR PGA // IN2R_TO_MIXINR MUTE, IN1R_TO_MIXINR UNMUTE, 0dB
@@ -3321,10 +3377,12 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	// 401H // AIF1 ADC1 Right Volume
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_RIGHT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1R_VOL_MASK);
-	if (wm8994->voip_no_nxp_on == 0)
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_EAR_AIF1ADCR_VOL); // ADC Digital Gain
+	if (wm8994->voip_nxp_ctrl == 1)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_GTALK_EAR_AIF1ADCR_VOL);
+	else if (wm8994->voip_nxp_ctrl == 2)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_EAR_AIF1ADCR_VOL);
 	else
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_EAR_AIF1ADCR_VOL); // ADC Digital Gain
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_EAR_AIF1ADCR_VOL);
 	wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1RP/N_TO_IN1R PGA
@@ -3362,14 +3420,11 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	val &= ~(WM8994_ADC1R_TO_AIF1ADC1R_MASK);
 	val |= (WM8994_ADC1R_TO_AIF1ADC1R);
 	wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_MIXER_ROUTING, val);
-
-    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_headset()\n");
 }
 
 void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 {
 	struct wm8994_priv *wm8994 = codec->drvdata;
-
 	u16 val;
 
     close_output_path_all(codec);
@@ -3419,34 +3474,42 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_GTALK_EAR_OUTPUTL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1R_MUTE_N_MASK|WM8994_HPOUT1R_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_GTALK_EAR_OUTPUTR_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_GTALK_EAR_OPGAL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAL_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OPGA_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTR_MUTE_N_MASK|WM8994_MIXOUTR_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_GTALK_EAR_OPGAL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAL_VOL);
 		else
-			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAR_VOL);
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OPGA_VOLUME, val);
 	}
 
@@ -3475,12 +3538,15 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	msleep(5);// 20ms delay
 
 	if(!wm8994->testmode_config_flag) {
+		// 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (TUNING_VOIP_GTALK_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
+		else if (wm8994->voip_nxp_ctrl == 2)
+			val |= (TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		else
-			val |= (TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+			val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -3563,6 +3629,16 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	val |= (WM8994_AIF1DAC1_UNMUTE);
 	wm8994_write(codec, WM8994_AIF1_DAC1_FILTERS_1, val);
 
+	wm8994_set_voipcall_headphone_mic(codec);
+
+    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_headphone()\n");
+}
+
+void wm8994_set_voipcall_headphone_mic(struct snd_soc_codec *codec)
+{
+	struct wm8994_priv *wm8994 = codec->drvdata;
+	u16 val;
+
 	printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_headphone - rec main mic\n");
 
 	// 300H // Mixing left channel output to right channel // val: 0x0010
@@ -3591,10 +3667,12 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 		// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_IN1L_VU|TUNING_VOIP_3P_INPUTMIX_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_GTALK_3P_INPUTMIX_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_IN1L_VU|TUNING_VOIP_NONXP_3P_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_3P_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 29H // MIXINL PGA // IN2L_TO_MIXINL MUTE, IN1L_TO_MIXINL UNMUTE, 0dB
@@ -3608,10 +3686,12 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	// 400H // AIF1 ADC1 Left Volume // Gain Tuning // H/W req.
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_LEFT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1L_VOL_MASK);
-	if (wm8994->voip_no_nxp_on == 0)
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL); // ADC Digital Gain
+	if (wm8994->voip_nxp_ctrl == 1)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_GTALK_MAIN_3P_AIF1ADCL_VOL);
+	else if (wm8994->voip_nxp_ctrl == 2)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCL_VOL);
 	else
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCL_VOL); // ADC Digital Gain
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL);
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1LP/N_TO_IN1L PGA
@@ -3649,14 +3729,11 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	val &= ~(WM8994_ADC1L_TO_AIF1ADC1L_MASK);
 	val |= (WM8994_ADC1L_TO_AIF1ADC1L);
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_MIXER_ROUTING, val);
-
-    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_headphone()\n");
 }
 
 void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 {
 	struct wm8994_priv *wm8994 = codec->drvdata;
-
 	u16 val;
 
     close_output_path_all(codec);
@@ -3685,10 +3762,12 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_SPEAKER_VOLUME_LEFT);
 		val &= ~(WM8994_SPKOUTL_MUTE_N_MASK|WM8994_SPKOUTL_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_SPKOUT_VU|WM8994_SPKOUTL_MUTE_N|TUNING_VOIP_SPKL_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_SPKOUT_VU|WM8994_SPKOUTL_MUTE_N|TUNING_VOIP_GTALK_SPKL_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_SPKOUT_VU|WM8994_SPKOUTL_MUTE_N|TUNING_VOIP_NONXP_SPKL_VOL);
+		else
+			val |= (WM8994_SPKOUT_VU|WM8994_SPKOUTL_MUTE_N|TUNING_VOIP_SPKL_VOL);
 		wm8994_write(codec, WM8994_SPEAKER_VOLUME_LEFT, val);
 
 		val = wm8994_read(codec, WM8994_SPEAKER_VOLUME_RIGHT);
@@ -3698,10 +3777,12 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 
 		val = wm8994_read(codec, WM8994_CLASSD);
 		val &= ~(WM8994_SPKOUTL_BOOST_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (TUNING_VOIP_CLASSD_VOL<<WM8994_SPKOUTL_BOOST_SHIFT);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (TUNING_VOIP_GTALK_CLASSD_VOL<<WM8994_SPKOUTL_BOOST_SHIFT);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (TUNING_VOIP_NONXP_CLASSD_VOL<<WM8994_SPKOUTL_BOOST_SHIFT);
+		else
+			val |= (TUNING_VOIP_CLASSD_VOL<<WM8994_SPKOUTL_BOOST_SHIFT);
 		wm8994_write(codec, WM8994_CLASSD, val);
 	}
 
@@ -3725,12 +3806,15 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_DAC1_RIGHT_VOLUME, val);
 
 	if(!wm8994->testmode_config_flag) {
+		// 00 0dB 01 +6dB 02 +12dB 03 +18dB
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (TUNING_VOIP_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 0dB 01 +6dB 02 +12dB 03 +18dB
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (TUNING_VOIP_GTALK_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
+		else if (wm8994->voip_nxp_ctrl == 2)
+			val |= (TUNING_VOIP_NONXP_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		else
-			val |= (TUNING_VOIP_NONXP_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 0dB 01 +6dB 02 +12dB 03 +18dB
+			val |= (TUNING_VOIP_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT);
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -3776,6 +3860,16 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	val |= (WM8994_SPKOUTL_ENA|WM8994_VMID_SEL_NORMAL|WM8994_BIAS_ENA);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, val);
 
+	wm8994_set_voipcall_speaker_mic(codec);
+
+    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_speaker()\n");
+}
+
+void wm8994_set_voipcall_speaker_mic(struct snd_soc_codec *codec)
+{
+	struct wm8994_priv *wm8994 = codec->drvdata;
+	u16 val;
+
 	printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_speaker - rec main mic\n");
 
 	// 300H // Mixing left channel output to right channel // val: 0x0010
@@ -3804,10 +3898,12 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 		// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
-		if (wm8994->voip_no_nxp_on == 0)
-			val |= (WM8994_IN1L_VU|TUNING_VOIP_SPK_INPUTMIX_VOL);
-		else
+		if (wm8994->voip_nxp_ctrl == 1)
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_GTALK_SPK_INPUTMIX_VOL);
+		else if (wm8994->voip_nxp_ctrl == 2)
 			val |= (WM8994_IN1L_VU|TUNING_VOIP_NONXP_SPK_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_SPK_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 29H // MIXINL PGA // IN2L_TO_MIXINL MUTE, IN1L_TO_MIXINL UNMUTE, 0dB
@@ -3821,10 +3917,12 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	// 400H // AIF1 ADC1 Left Volume // Gain Tuning // H/W req.
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_LEFT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1L_VOL_MASK);
-	if (wm8994->voip_no_nxp_on == 0)
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL); // ADC Digital Gain
+	if (wm8994->voip_nxp_ctrl == 1)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_GTALK_MAIN_SPK_AIF1ADCL_VOL);
+	else if (wm8994->voip_nxp_ctrl == 2)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCL_VOL);
 	else
-		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCL_VOL); // ADC Digital Gain
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL);
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1LP/N_TO_IN1L PGA
@@ -3862,14 +3960,11 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	val &= ~(WM8994_ADC1L_TO_AIF1ADC1L_MASK);
 	val |= (WM8994_ADC1L_TO_AIF1ADC1L);
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_MIXER_ROUTING, val);
-
-    printk(SND_KERN_DEBUG "[WM8994] wm8994_set_voipcall_speaker()\n");
 }
 
 void wm8994_set_voipcall_bluetooth(struct snd_soc_codec *codec)
 {
 	struct wm8994_priv *wm8994 = codec->drvdata;
-
 	u16 val;
 
     close_output_path_all(codec);

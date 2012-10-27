@@ -86,7 +86,9 @@ enum input_source_state	{DEFAULT, RECOGNITION, CAMCORDER};
 #define CMD_CODEC_STANDBY            8 // Playback flag clear for shutdown. It's possible for codec to go sleep mode when sound is not played after path setting.
 #define CMD_CODEC_EMERGENCY_RECOVERY 9 // Emergency recovery for Error like -EIO, -ESTRPIPE, and etc.
 #define CMD_VOIP_NO_NXP_ON           10 // VoIP No Nxp Mode On
-#define CMD_VOIP_NO_NXP_OFF          11 // VoIP No Nxp Mode On
+#define CMD_VOIP_NO_NXP_OFF          11 // VoIP No Nxp Mode Off
+#define CMD_VOIP_GTALK_ON            12 // VoIP GTalk (MODE_IN_COMMUNICATION + STREAM_VOICECALL) Mode On
+#define CMD_VOIP_GTALK_OFF           13 // VoIP GTalk (MODE_IN_COMMUNICATION + STREAM_VOICECALL) Mode Off
 
 typedef void (*select_route)(struct snd_soc_codec *);
 typedef void (*select_mic_route)(struct snd_soc_codec *);
@@ -124,7 +126,8 @@ struct wm8994_priv {
 	struct wm8994_platform_data *pdata;
 	int testmode_config_flag;
 	u16 dc_servo[DCS_NUM];
-	unsigned int voip_no_nxp_on;
+	unsigned int voip_nxp_ctrl;
+	unsigned int mic_mute;
 };
 
 struct gain_info_t {
@@ -173,9 +176,13 @@ void wm8994_set_voicecall_speaker(struct snd_soc_codec *codec);
 void wm8994_set_voicecall_bluetooth(struct snd_soc_codec *codec);
 void close_output_path_all(struct snd_soc_codec *codec);
 void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec);
+void wm8994_set_voipcall_receiver_mic(struct snd_soc_codec *codec);
 void wm8994_set_voipcall_headset(struct snd_soc_codec *codec);
+void wm8994_set_voipcall_headset_mic(struct snd_soc_codec *codec);
 void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec);
+void wm8994_set_voipcall_headphone_mic(struct snd_soc_codec *codec);
 void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec);
+void wm8994_set_voipcall_speaker_mic(struct snd_soc_codec *codec);
 void wm8994_set_voipcall_bluetooth(struct snd_soc_codec *codec);
 #endif
 
