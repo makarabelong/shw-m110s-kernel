@@ -85,6 +85,8 @@ enum input_source_state	{DEFAULT, RECOGNITION, CAMCORDER};
 #define CMD_CALL_END                 7 // 5 // Codec off in call mode - to reduce pop up noise.
 #define CMD_CODEC_STANDBY            8 // Playback flag clear for shutdown. It's possible for codec to go sleep mode when sound is not played after path setting.
 #define CMD_CODEC_EMERGENCY_RECOVERY 9 // Emergency recovery for Error like -EIO, -ESTRPIPE, and etc.
+#define CMD_VOIP_NO_NXP_ON           10 // VoIP No Nxp Mode On
+#define CMD_VOIP_NO_NXP_OFF          11 // VoIP No Nxp Mode On
 
 typedef void (*select_route)(struct snd_soc_codec *);
 typedef void (*select_mic_route)(struct snd_soc_codec *);
@@ -122,6 +124,7 @@ struct wm8994_priv {
 	struct wm8994_platform_data *pdata;
 	int testmode_config_flag;
 	u16 dc_servo[DCS_NUM];
+	unsigned int voip_no_nxp_on;
 };
 
 struct gain_info_t {

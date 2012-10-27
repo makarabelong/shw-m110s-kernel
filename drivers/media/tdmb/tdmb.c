@@ -648,14 +648,17 @@ void tdmb_setchannel()
 
 void tdmb_early_suspend(struct early_suspend *h)
 {
-    DPRINTK("Call tdmb_early_suspend! \r\n");
+    pr_info("tdmb_early_suspend +++\n");
+    
     OnSleepFlag = 1;
     savArg = 0;
+
+    pr_info("tdmb_early_suspend ---\n");
 	return ;
 }
 void tdmb_late_resume(struct early_suspend *h)
 {
-    DPRINTK("Call tdmb_late_resume! \r\n");
+    pr_info("tdmb_late_resume +++\n");
     
     if(OnSleepFlag&&savArg)
     {
@@ -668,6 +671,8 @@ void tdmb_late_resume(struct early_suspend *h)
     }
     
     OnSleepFlag = 0;
+
+    pr_info("tdmb_late_resume ---\n");
 	return ;
 }
 #endif

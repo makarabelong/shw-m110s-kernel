@@ -281,6 +281,8 @@ static irqreturn_t touchkey_interrupt(int irq, void *dummy)
 #ifdef CONFIG_HAS_EARLYSUSPEND
 static void melfas_touchkey_early_suspend(struct early_suspend *h)
 {
+    pr_info("melfas_touchkey_early_suspend +++\n");
+    
 	is_suspending = 1;
 	if(user_press_on==1)
 	{
@@ -304,10 +306,14 @@ static void melfas_touchkey_early_suspend(struct early_suspend *h)
 	gpio_direction_output(_3_GPIO_TOUCH_EN, 0);
 	gpio_direction_output(_3_TOUCH_SDA_28V, 0);
 	gpio_direction_output(_3_TOUCH_SCL_28V, 0);
+
+    pr_info("melfas_touchkey_early_suspend ---\n");
 }
 
 static void melfas_touchkey_early_resume(struct early_suspend *h)
 {
+    pr_info("melfas_touchkey_early_resume +++\n");
+    
 	if(touchkey_dead)
 	{
 		printk(KERN_ERR "touchkey died after ESD");
@@ -323,6 +329,8 @@ static void melfas_touchkey_early_resume(struct early_suspend *h)
 	
 	enable_irq(IRQ_TOUCH_INT);
 	is_suspending = 0;
+
+    pr_info("melfas_touchkey_early_resume ---\n");
 }
 #endif	// End of CONFIG_HAS_EARLYSUSPEND
 

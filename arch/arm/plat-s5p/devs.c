@@ -42,6 +42,8 @@
 
 /* Android Gadget */
 #include <linux/usb/android_composite.h>
+#include <linux/usb/f_accessory.h>
+
 #define S3C_VENDOR_ID				0x04e8	/* Samsung */
 #define S3C_UMS_PRODUCT_ID			0x685E
 #define S3C_UMS_ADB_PRODUCT_ID		0x685E
@@ -103,6 +105,17 @@ static char *usb_functions_ums_acm[] = {
 static char *usb_functions_mtp[] = {
 	"mtp",
 };
+
+/* accessory mode */
+static char *usb_functions_accessory[] = {
+	"accessory",
+};
+
+static char *usb_functions_accessory_adb[] = {
+	"accessory",
+	"adb",
+};
+
 #endif
 
 static char *usb_functions_all[] = {
@@ -114,7 +127,10 @@ static char *usb_functions_all[] = {
 	"usb_mass_storage",
 	"acm",
 	"adb",
-	"rndis",
+	"rndis",	
+#ifdef CONFIG_USB_ANDROID_ACCESSORY	
+	"accessory",
+#endif	
 #else	/* S1-EUR */
 	"acm",
 	"usb_mass_storage",
@@ -189,6 +205,17 @@ static struct android_usb_product usb_products[] = {
 #endif
 		.s		= ANDROID_RNDIS_CONFIG_STRING,
 		.mode		= USBSTATUS_VTP,
+	},
+	{
+		.vendor_id	= USB_ACCESSORY_VENDOR_ID,
+		.product_id	= USB_ACCESSORY_PRODUCT_ID,
+		.num_functions	= ARRAY_SIZE(usb_functions_accessory),
+		.functions	= usb_functions_accessory,		
+		.bDeviceClass	= 0xEF,
+		.bDeviceSubClass= 0x02,
+		.bDeviceProtocol= 0x01,
+		.s		= ANDROID_ACC_CONFIG_STRING,
+		.mode		= USBSTATUS_ACCESSORY,
 	},
 #else	/* S1-EUR-Config */
 	{

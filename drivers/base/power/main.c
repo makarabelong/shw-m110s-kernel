@@ -395,7 +395,7 @@ static char *pm_verb(int event)
 
 static void pm_dev_dbg(struct device *dev, pm_message_t state, char *info)
 {
-	dev_dbg(dev, "%s%s%s\n", info, pm_verb(state.event),
+	dev_printk(KERN_DEBUG, dev, "%s%s%s\n", info, pm_verb(state.event),
 		((state.event & PM_EVENT_SLEEP) && device_may_wakeup(dev)) ?
 		", may wakeup" : "");
 }
@@ -614,7 +614,7 @@ static void dpm_drv_timeout(unsigned long data)
 static void dpm_drv_wdset(struct device *dev)
 {
 	dpm_drv_wd.data = (unsigned long) dev;
-	mod_timer(&dpm_drv_wd, jiffies + (HZ * 3));
+	mod_timer(&dpm_drv_wd, jiffies + (HZ * 12));
 }
 
 /**

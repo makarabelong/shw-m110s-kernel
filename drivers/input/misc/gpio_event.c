@@ -105,17 +105,25 @@ err_no_func:
 void gpio_event_suspend(struct early_suspend *h)
 {
 	struct gpio_event *ip;
+    pr_info("gpio_event_suspend +++\n");
+    
 	ip = container_of(h, struct gpio_event, early_suspend);
 	gpio_event_call_all_func(ip, GPIO_EVENT_FUNC_SUSPEND);
 	ip->info->power(ip->info, 0);
+
+    pr_info("gpio_event_suspend ---\n");
 }
 
 void gpio_event_resume(struct early_suspend *h)
 {
 	struct gpio_event *ip;
+    pr_info("gpio_event_resume +++\n");
+    
 	ip = container_of(h, struct gpio_event, early_suspend);
 	ip->info->power(ip->info, 1);
 	gpio_event_call_all_func(ip, GPIO_EVENT_FUNC_RESUME);
+
+    pr_info("gpio_event_resume ---\n");
 }
 #endif
 

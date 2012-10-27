@@ -1385,7 +1385,7 @@ void s3cfb_early_suspend(struct early_suspend *h)
 	struct s3cfb_global *fbdev =
 		container_of(h, struct s3cfb_global, early_suspend);
 
-	pr_debug("s3cfb_early_suspend is called\n");
+	pr_info("s3cfb_early_suspend +++\n");
 #ifdef CONFIG_FB_S3C_MDNIE
 	writel(0,fbdev->regs + 0x27c);
 	msleep(20);
@@ -1405,6 +1405,7 @@ void s3cfb_early_suspend(struct early_suspend *h)
 	regulator_disable(fbdev->vcc_lcd);
 	regulator_disable(fbdev->regulator);
 
+    pr_info("s3cfb_early_suspend ---\n");
 	return ;
 }
 
@@ -1418,7 +1419,7 @@ void s3cfb_late_resume(struct early_suspend *h)
 	struct s3cfb_window *win;
 	int i, j, ret;
 
-	pr_info("s3cfb_late_resume is called\n");
+	pr_info("s3cfb_late_resume +++\n");
 
 	ret = regulator_enable(fbdev->regulator);
 	if (ret < 0)
@@ -1473,7 +1474,7 @@ void s3cfb_late_resume(struct early_suspend *h)
 	if (pdata->reset_lcd)
 		pdata->reset_lcd(pdev);
 
-	pr_info("s3cfb_late_resume is complete\n");
+	pr_info("s3cfb_late_resume ---\n");
 	return ;
 }
 

@@ -91,6 +91,7 @@ struct android_dev {
 	int num_functions;
 	char **functions;
 
+	int vendor_id;
 	int product_id;
 	int version;
 #ifdef CONFIG_USB_ANDROID_SAMSUNG_COMPOSITE
@@ -262,7 +263,7 @@ static int android_setup_config(struct usb_configuration *c,
 	CSY_DBG("\n");
 	for (i = 0; i < android_config_driver.next_interface_id; i++) {
 #ifdef CONFIG_USB_ANDROID_SAMSUNG_COMPOSITE /* soonyong.cho : find same interface for to skip calling*/
-		if (!android_config_driver.interface[i]->disabled && android_config_driver.interface[i]->setup) {
+		if (android_config_driver.interface[i]->setup) {
 			if (!strcmp(temp_name, android_config_driver.interface[i]->name)) {
 				CSY_DBG("[%d]skip name=%s\n",i, temp_name);
 				continue;
@@ -310,6 +311,22 @@ static int product_matches_functions(struct android_usb_product *p)
 	return 1;
 }
 
+static int get_vendor_id(struct android_dev *dev)
+{
+	struct android_usb_product *p = dev->products;
+	int count = dev->num_products;
+	int i;
+
+	if (p) {
+		for (i = 0; i < count; i++, p++) {
+			if (p->vendor_id && product_matches_functions(p))
+				return p->vendor_id;
+		}
+	}
+	/* use default vendor ID */
+	return dev->vendor_id;
+}
+
 static int get_product_id(struct android_dev *dev)
 {
 	struct android_usb_product *p = dev->products;
@@ -331,7 +348,7 @@ static int android_bind(struct usb_composite_dev *cdev)
 {
 	struct android_dev *dev = _android_dev;
 	struct usb_gadget	*gadget = cdev->gadget;
-	int			gcnum, id, product_id, ret;
+	int			gcnum, id, ret;
 
 	CSY_DBG2("++\n");
 	printk(KERN_INFO "android_bind\n");
@@ -390,8 +407,9 @@ static int android_bind(struct usb_composite_dev *cdev)
 
 	usb_gadget_set_selfpowered(gadget);
 	dev->cdev = cdev;
-	product_id = get_product_id(dev);
-	device_desc.idProduct = __constant_cpu_to_le16(product_id);
+	device_desc.idVendor = __constant_cpu_to_le16(get_vendor_id(dev));
+	device_desc.idProduct = __constant_cpu_to_le16(get_product_id(dev));
+	cdev->desc.idVendor = device_desc.idVendor;
 	cdev->desc.idProduct = device_desc.idProduct;
 
 	CSY_DBG_ESS("bind pid=0x%x,vid=0x%x,bcdDevice=0x%x,serial=%s\n", 
@@ -558,16 +576,19 @@ void android_enable_function(struct usb_function *f, int enable)
 	CSY_DBG_ESS("++ f->name=%s enable=%d\n", f->name, enable);
 
 	if(enable) {
+#if 0		
 		if (!strcmp(f->name, "acm")) {
 			ret = set_product(dev, USBSTATUS_SAMSUNG_KIES);
 			if (ret != -1)
 				dev->current_usb_mode = USBSTATUS_SAMSUNG_KIES;
 		}
+#endif		
 		if (!strcmp(f->name, "adb")) {
 			ret = set_product(dev, USBSTATUS_ADB);
 			if (ret != -1)
 				dev->debugging_usb_mode = 1; /* save debugging status */
 		}
+#if 0		
 		if (!strcmp(f->name, "mtp")) {
 			ret = set_product(dev, USBSTATUS_MTPONLY);
 			if (ret != -1)
@@ -581,13 +602,17 @@ void android_enable_function(struct usb_function *f, int enable)
 			if (ret != -1)
 				dev->current_usb_mode = USBSTATUS_UMS;
 		}
+#endif		
+		if (!strcmp(f->name, "accessory")) {
+			ret = set_product(dev, USBSTATUS_ACCESSORY);			
+		}
 
 	}
 	else { /* for disable : Return old mode. If Non-GED model changes policy, below code has to be modified. */
-		if (!strcmp(f->name, "rndis") && dev->debugging_usb_mode)
+		if (!strcmp(f->name, "accessory") && dev->debugging_usb_mode)
 			ret = set_product(dev, USBSTATUS_ADB);
 		else
-		ret = set_product(dev, dev->current_usb_mode);
+			ret = set_product(dev, dev->current_usb_mode);
 
 		if(!strcmp(f->name, "adb")) 
 			dev->debugging_usb_mode = 0;
@@ -600,10 +625,13 @@ void android_enable_function(struct usb_function *f, int enable)
 
 
 	product_id = get_product_id(dev);
+	device_desc.idVendor = __constant_cpu_to_le16(get_vendor_id(dev));
 	device_desc.idProduct = __constant_cpu_to_le16(product_id);
 
-	if (dev->cdev)
+	if (dev->cdev) {
+		dev->cdev->desc.idVendor = device_desc.idVendor;
 		dev->cdev->desc.idProduct = device_desc.idProduct;
+	}
 
 	/* force reenumeration */
 	CSY_DBG_ESS("dev->cdev=0x%p, dev->cdev->gadget=0x%p, dev->cdev->gadget->speed=0x%x, mode=%d\n",
@@ -657,11 +685,26 @@ void android_enable_function(struct usb_function *f, int enable)
 			}
 		}
 #endif
+#ifdef CONFIG_USB_ANDROID_ACCESSORY
+		if (!strcmp(f->name, "accessory") && enable) {
+			struct usb_function		*func;
 
-		product_id = get_product_id(dev);
-		device_desc.idProduct = __constant_cpu_to_le16(product_id);
-		if (dev->cdev)
+		    /* disable everything else (and keep adb for now) */
+			list_for_each_entry(func, &android_config_driver.functions, list) {
+				if (strcmp(func->name, "accessory")
+					&& strcmp(func->name, "adb")) {
+					usb_function_set_enabled(func, 0);
+				}
+			}
+        }
+#endif
+
+		device_desc.idVendor = __constant_cpu_to_le16(get_vendor_id(dev));
+		device_desc.idProduct = __constant_cpu_to_le16(get_product_id(dev));
+		if (dev->cdev) {
+			dev->cdev->desc.idVendor = device_desc.idVendor;
 			dev->cdev->desc.idProduct = device_desc.idProduct;
+		}
 		usb_composite_force_reset(dev->cdev);
 	}
 }
@@ -721,10 +764,13 @@ static void samsung_enable_function(int mode)
 	}
 
 	product_id = get_product_id(dev);
+	device_desc.idVendor = __constant_cpu_to_le16(get_vendor_id(dev));
 	device_desc.idProduct = __constant_cpu_to_le16(product_id);
 
-	if (dev->cdev)
+	if (dev->cdev) {
+		dev->cdev->desc.idVendor = device_desc.idVendor;
 		dev->cdev->desc.idProduct = device_desc.idProduct;
+	}
 
 	/* force reenumeration */
 	CSY_DBG_ESS("dev->cdev=0x%p, dev->cdev->gadget=0x%p, dev->cdev->gadget->speed=0x%x, mode=%d\n",
@@ -931,9 +977,11 @@ static int android_probe(struct platform_device *pdev)
 		dev->num_products = pdata->num_products;
 		dev->functions = pdata->functions;
 		dev->num_functions = pdata->num_functions;
-		if (pdata->vendor_id)
+		if (pdata->vendor_id) {
+			dev->vendor_id = pdata->vendor_id;
 			device_desc.idVendor =
 				__constant_cpu_to_le16(pdata->vendor_id);
+		}
 		if (pdata->product_id) {
 			dev->product_id = pdata->product_id;
 			device_desc.idProduct =

@@ -34,7 +34,7 @@
 
 #define MAX_ZONE_LIMIT		10
 /* keep this value if you support double-pressed concept */
-#define SEND_KEY_CHECK_TIME_MS	30		/* 30ms */
+#define SEND_KEY_CHECK_TIME_MS	20		/* 20ms */
 #define DET_CHECK_TIME_MS	50		/* 50ms to remove path change noise */
 #define WAKE_LOCK_TIME		(HZ * 5)	/* 5 sec */
 #define NUM_INPUT_DEVICE_ID	2

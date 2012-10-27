@@ -39,6 +39,7 @@
 #include <linux/gpio.h>
 #include <plat/gpio-cfg.h>
 #include <mach/regs-clock.h>
+#include <mach/cpu-freq-v210.h>
 #include "wm8994_samsung.h"
 
 #define WM8994_VERSION "0.1"
@@ -528,6 +529,9 @@ static int wm8994_set_playback_path(struct snd_kcontrol *kcontrol,
 	if(wm8994->codec_state & CALL_ACTIVE)
 	{
 		wm8994->codec_state &= ~(CALL_ACTIVE);
+		if (wm8994->codec_state & (VOIP_CALL_ACTIVE)) {
+			s5pv210_unlock_dvfs_high_level(DVFS_LOCK_TOKEN_3);
+		}
 		wm8994->codec_state &= ~(VOICE_CALL_ACTIVE|VOIP_CALL_ACTIVE);
 		is_voip_incall_state = false;
 
@@ -698,6 +702,7 @@ static int wm8994_set_voipcall_path(struct snd_kcontrol *kcontrol,
 	{
 		wm8994->codec_state |= CALL_ACTIVE;
 		wm8994->codec_state |= (VOIP_CALL_ACTIVE);
+		s5pv210_lock_dvfs_high_level(DVFS_LOCK_TOKEN_3, L2);
 		is_voip_incall_state = true;
 		wm8994->cur_path = path_num;
 		wm8994->universal_voipcall_path[wm8994->cur_path](codec);
@@ -815,6 +820,18 @@ static int wm8994_set_codec_status(struct snd_kcontrol *kcontrol,
 			DEBUG_LOG(" INITIALIZE ***** RECOVERY *****");
 
 			printk(SND_KERN_DEBUG "[WM8994] CMD_CODEC_EMERGENCY_RECOVERY done.\n");
+			break;
+
+		case CMD_VOIP_NO_NXP_ON:
+			printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_NO_NXP_ON\n");
+			wm8994->voip_no_nxp_on = 1;
+			printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_no_nxp_on = %d\n", wm8994->voip_no_nxp_on);
+			break;
+
+		case CMD_VOIP_NO_NXP_OFF:
+			printk(SND_KERN_DEBUG "[WM8994] CMD_VOIP_NO_NXP_OFF\n");
+			wm8994->voip_no_nxp_on = 0;
+			printk(SND_KERN_DEBUG "[WM8994] wm8994->voip_no_nxp_on = %d\n", wm8994->voip_no_nxp_on);
 			break;
 
 		default :
@@ -3180,6 +3197,7 @@ static int wm8994_init(struct wm8994_priv *wm8994_private,
 	wm8994->power_state = CODEC_OFF;
 	wm8994->input_source = DEFAULT;
 	wm8994->pdata = pdata;
+	wm8994->voip_no_nxp_on = 0;
 
 	wm8994_write(codec, WM8994_SOFTWARE_RESET, 0x0000);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_1, ((0x3<<WM8994_VMID_SEL_SHIFT)|WM8994_BIAS_ENA));

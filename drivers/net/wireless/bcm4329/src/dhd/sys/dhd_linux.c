@@ -605,21 +605,24 @@ static void dhd_early_suspend(struct early_suspend *h)
 {
 	struct dhd_info *dhd = container_of(h, struct dhd_info, early_suspend);
 
-	DHD_TRACE(("%s: enter\n", __FUNCTION__));
+	pr_info("dhd_early_suspend +++\n");
 
 	if (dhd)
 		dhd_suspend_resume_helper(dhd, 1);
 
+    pr_info("dhd_early_suspend ---\n");
 }
 
 static void dhd_late_resume(struct early_suspend *h)
 {
 	struct dhd_info *dhd = container_of(h, struct dhd_info, early_suspend);
 
-	DHD_TRACE(("%s: enter\n", __FUNCTION__));
-
+    pr_info("dhd_late_resume +++\n");
+    
 	if (dhd)
 		dhd_suspend_resume_helper(dhd, 0);
+
+    pr_info("dhd_late_resume ---\n");
 }
 #endif /* defined(CONFIG_HAS_EARLYSUSPEND) */
 

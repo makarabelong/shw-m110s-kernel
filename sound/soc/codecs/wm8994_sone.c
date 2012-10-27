@@ -42,8 +42,13 @@
 
 // VoIP Call
 #define TUNING_VOIP_RCV_AIF1DAC_BOOST           0x01 // 301h // [DJ02-1720]
-#define TUNING_VOIP_RCV_OPGAL_VOL               0x3C // 20h // [DL08-1435] VoIP 0x3B->0x3E->0x3C (+3dB)
-#define TUNING_VOIP_RCV_OPGAR_VOL               0x3C // 21h // [DL08-1435] VoIP 0x3B->0x3E->0x3C (+3dB)
+#define TUNING_VOIP_RCV_OPGAL_VOL               0x3C // 20h // [DL08-1435] VoIP 0x3C (+3dB)
+#define TUNING_VOIP_RCV_OPGAR_VOL               0x3C // 21h //
+
+// VoIP No Nxp Call
+#define TUNING_VOIP_NONXP_RCV_AIF1DAC_BOOST     0x01 // 301h // [VF14-1816]
+#define TUNING_VOIP_NONXP_RCV_OPGAL_VOL         0x3E // 20h // [VF22-1651] VoIP 0x3E (+5dB)
+#define TUNING_VOIP_NONXP_RCV_OPGAR_VOL         0x3E // 21h //
 
 ////////////////////////////////////////////////////////////////////////////////
 // **** EAR **** //
@@ -52,14 +57,14 @@
 #define TUNING_EAR_OUTMIX6_VOL                  0x00 // 32h
 
 // Playback
-#define TUNING_MP3_OUTPUTL_VOL                  0x36 // 1Ch // [DE30-1522] 0x36 (-3dB) // H/W Req.
-#define TUNING_MP3_OUTPUTR_VOL                  0x36 // 1Dh // [DE30-1522] 0x36 (-3dB) // H/W Req.
+#define TUNING_MP3_OUTPUTL_VOL                  0x36 // 1Ch // [DE30-1522] 0x36 (-3dB)
+#define TUNING_MP3_OUTPUTR_VOL                  0x36 // 1Dh //
 #define TUNING_MP3_OPGAL_VOL                    0x39 // 20h
 #define TUNING_MP3_OPGAR_VOL                    0x39 // 21h
 
 // Dual Path
 #define TUNING_MP3_DUAL_OUTPUTL_VOL             0x20 // 1Ch // [DD01-1045] 0x20 // DUAL PATH TEST
-#define TUNING_MP3_DUAL_OUTPUTR_VOL             0x20 // 1Dh // [DD01-1045] 0x20 // DUAL PATH TEST
+#define TUNING_MP3_DUAL_OUTPUTR_VOL             0x20 // 1Dh //
 #define TUNING_DUAL_OUTPUTL_VOL                 0x20 // 1Ch
 #define TUNING_DUAL_OUTPUTR_VOL                 0x20 // 1Dh
 
@@ -77,11 +82,18 @@
 #define TUNING_CALL_OPGAR_VOL                   0x39 // 21h
 
 // VoIP Call (3pole/4pole)
-#define TUNING_VOIP_EAR_OUTPUTL_VOL             0x34 // 1Ch // [DL08-1435] VoIP 0x3B->0x34 (-5dB) // H/W Req.
-#define TUNING_VOIP_EAR_OUTPUTR_VOL             0x34 // 1Dh // [DL08-1435] VoIP 0x3B->0x34 (-5dB)
-#define TUNING_VOIP_EAR_OPGAL_VOL               0x39 // 20h // [DL08-1435] VoIP 0x3F->0x39 (0dB)
-#define TUNING_VOIP_EAR_OPGAR_VOL               0x39 // 21h // [DL08-1435] VoIP 0x3F->0x39 (0dB)
-#define TUNING_VOIP_EAR_AIF1DAC_BOOST           0x00 // 301h // [DL08-1435] VoIP 0x01->0x00 (0dB)
+#define TUNING_VOIP_EAR_OUTPUTL_VOL             0x34 // 1Ch // [DL08-1435] VoIP 0x34 (-5dB) // H/W Req.
+#define TUNING_VOIP_EAR_OUTPUTR_VOL             0x34 // 1Dh // [DL08-1435] VoIP 0x34 (-5dB)
+#define TUNING_VOIP_EAR_OPGAL_VOL               0x39 // 20h // [DL08-1435] VoIP 0x39 (0dB)
+#define TUNING_VOIP_EAR_OPGAR_VOL               0x39 // 21h // [DL08-1435] VoIP 0x39 (0dB)
+#define TUNING_VOIP_EAR_AIF1DAC_BOOST           0x00 // 301h // [DL08-1435] VoIP 0x00 (0dB)
+
+// VoIP No Nxp Call (3pole/4pole)
+#define TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL       0x39 // 1Ch // [VF22-1651] VoIP 0x39 (0dB)
+#define TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL       0x39 // 1Dh //
+#define TUNING_VOIP_NONXP_EAR_OPGAL_VOL         0x39 // 20h // [VF14-1816] VoIP 0x39 (0dB)
+#define TUNING_VOIP_NONXP_EAR_OPGAR_VOL         0x39 // 21h //
+#define TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST     0x00 // 301h // [VF14-1816] VoIP 0x00 (0dB)
 
 #define TUNING_HPOUTMIX_VOL                     0x00
 
@@ -100,9 +112,14 @@
 #define TUNING_CALL_CLASSD_VOL                  0x06 // 25h
 
 // VoIP Call
-#define TUNING_VOIP_SPKL_VOL                    0x3C // 26h // [DL08-1435] 0x3B->0x3E->0x3C (+3dB)
+#define TUNING_VOIP_SPKL_VOL                    0x3C // 26h // [DL08-1435] 0x3C (+3dB)
 #define TUNING_VOIP_CLASSD_VOL                  0x06 // 25h // [DL08-1435] 0x06 (+9dB)
-#define TUNING_VOIP_SPK_AIF1DAC_BOOST           0x01 // 301h // [DL08-1435] 0x02->0x01 (+6dB)
+#define TUNING_VOIP_SPK_AIF1DAC_BOOST           0x01 // 301h // [DL08-1435] 0x01 (+6dB)
+
+// VoIP No Nxp Call
+#define TUNING_VOIP_NONXP_SPKL_VOL              0x3A // 26h // [VF22-1651] 0x3A (+1dB)
+#define TUNING_VOIP_NONXP_CLASSD_VOL            0x06 // 25h // [VF14-1816] 0x06 (+9dB)
+#define TUNING_VOIP_NONXP_SPK_AIF1DAC_BOOST     0x01 // 301h // [VF14-1816] 0x01 (+6dB)
 
 ////////////////////////////////////////////////////////////////////////////////
 // **** FILTERS **** //
@@ -129,17 +146,30 @@
 #define TUNING_CALL_SPK_INPUTMIX_VOL            0x0B // 18h
 
 // VoIP Call (RCV/SPK/3Pole)
-#define TUNING_VOIP_RCV_INPUTMIX_VOL            0x15 // 18h // [DJ22-2243] VoIP 0x17->0x15(+15.0dB)
-#define TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL       0xDA // 400h // [DL24-1836] VoIP 0xDA(+9.750dB)
+#define TUNING_VOIP_RCV_INPUTMIX_VOL            0x15 // 18h // [DJ22-2243] VoIP 0x15(+15.0dB)
+#define TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL       0xDA // 400h // [DL24-1836] VoIP 0xDA (+9.750dB)
 #define TUNING_VOIP_MAIN_RCV_AIF1ADCR_VOL       0xDA // 401h
 
-#define TUNING_VOIP_SPK_INPUTMIX_VOL            0x17 // 18h // [DK19-1658] VoIP 0x1A->0x19->0x17 (+18.0dB)
-#define TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL       0xCD // 400h // [DL24-1836] VoIP 0xCD(+4.875dB)
+#define TUNING_VOIP_SPK_INPUTMIX_VOL            0x17 // 18h // [DK19-1658] VoIP 0x17 (+18.0dB)
+#define TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL       0xCD // 400h // [DL24-1836] VoIP 0xCD (+4.875dB)
 #define TUNING_VOIP_MAIN_SPK_AIF1ADCR_VOL       0xCD // 401h
 
-#define TUNING_VOIP_3P_INPUTMIX_VOL             0x17 // 18h // [DK19-1658] VoIP 0x1A->0x19->0x17 (+18.0dB)
-#define TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL        0xCD // 400h // [DL24-1836] VoIP 0xCD(+4.875dB)
+#define TUNING_VOIP_3P_INPUTMIX_VOL             0x17 // 18h // [DK19-1658] VoIP 0x17 (+18.0dB)
+#define TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL        0xCD // 400h // [DL24-1836] VoIP 0xCD (+4.875dB)
 #define TUNING_VOIP_MAIN_3P_AIF1ADCR_VOL        0xCD // 401h
+
+// VoIP No Nxp Call (RCV/SPK/3Pole)
+#define TUNING_VOIP_NONXP_RCV_INPUTMIX_VOL      0x15 // 18h // [VF14-1816] VoIP 0x15 (+15.0dB)
+#define TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCL_VOL 0xDA // 400h // [VF14-1816] VoIP 0xDA (+9.750dB)
+#define TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCR_VOL 0xDA // 401h
+
+#define TUNING_VOIP_NONXP_SPK_INPUTMIX_VOL      0x17 // 18h // [VF14-1816] VoIP 0x17 (+18.0dB)
+#define TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCL_VOL 0xCD // 400h // [VF14-1816] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCR_VOL 0xCD // 401h
+
+#define TUNING_VOIP_NONXP_3P_INPUTMIX_VOL       0x17 // 18h // [VF14-1816] VoIP 0x17 (+18.0dB)
+#define TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCL_VOL  0xCD // 400h // [VF14-1816] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCR_VOL  0xCD // 401h
 
 // Ear
 // Normal Recording
@@ -156,9 +186,14 @@
 #define TUNING_RECOGNITION_EAR_AIF1ADCR_VOL     0xC0 // 401
 
 // VoIP Call (4Pole)
-#define TUNING_VOIP_EAR_INPUTMIX_VOL            0x15 // 1Ah // [DJ22-2243] VoIP 0x17->0x15(+15.0dB)
-#define TUNING_VOIP_EAR_AIF1ADCL_VOL            0xE7 // 400h // [DL24-1836] VoIP 0xE7(+14.625dB)
+#define TUNING_VOIP_EAR_INPUTMIX_VOL            0x15 // 1Ah // [DJ22-2243] VoIP 0x15 (+15.0dB)
+#define TUNING_VOIP_EAR_AIF1ADCL_VOL            0xE7 // 400h // [DL24-1836] VoIP 0xE7 (+14.625dB)
 #define TUNING_VOIP_EAR_AIF1ADCR_VOL            0xE7 // 401h
+
+// VoIP No Nxp Call (4Pole)
+#define TUNING_VOIP_NONXP_EAR_INPUTMIX_VOL      0x15 // 1Ah // [VF14-1816] VoIP 0x15 (+15.0dB)
+#define TUNING_VOIP_NONXP_EAR_AIF1ADCL_VOL      0xE7 // 400h // [VF14-1816] VoIP 0xE5 (+14.625dB)
+#define TUNING_VOIP_NONXP_EAR_AIF1ADCR_VOL      0xE7 // 401h
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -186,9 +221,7 @@ int audio_init(void)
 	s3c_gpio_slp_setpull_updown(GPIO_CODEC_LDO_EN, S3C_GPIO_PULL_NONE);
 #endif
 	/* GPIO_CODEC_XTAL_EN (CLOCK) SETTTING */
-#if 1 //defined CONFIG_M110S
-	if (HWREV<=3)
-	{
+	if (HWREV<=3) {
         if (gpio_is_valid(GPIO_CODEC_XTAL_EN_R03)) {
         	if (gpio_request(GPIO_CODEC_XTAL_EN_R03, "GPIO_CODEC_XTAL_EN"))
     			printk(KERN_ERR "Failed to request GPIO_CODEC_XTAL_EN! \n");
@@ -196,9 +229,7 @@ int audio_init(void)
     		gpio_direction_output(GPIO_CODEC_XTAL_EN_R03, 0);
     	}
     	s3c_gpio_setpull(GPIO_CODEC_XTAL_EN_R03, S3C_GPIO_PULL_NONE);
-	}
-    else
-    {
+	} else {
         if (gpio_is_valid(GPIO_CODEC_XTAL_EN_R04)) {
         	if (gpio_request(GPIO_CODEC_XTAL_EN_R04, "GPIO_CODEC_XTAL_EN"))
     			printk(KERN_ERR "Failed to request GPIO_CODEC_XTAL_EN! \n");
@@ -207,15 +238,6 @@ int audio_init(void)
     	}
     	s3c_gpio_setpull(GPIO_CODEC_XTAL_EN_R04, S3C_GPIO_PULL_NONE);
     }
-#else // #elif defined CONFIG_M115S
-    if (gpio_is_valid(GPIO_CODEC_XTAL_EN)) {
-    	if (gpio_request(GPIO_CODEC_XTAL_EN, "GPIO_CODEC_XTAL_EN"))
-			printk(KERN_ERR "Failed to request GPIO_CODEC_XTAL_EN! \n");
-
-		gpio_direction_output(GPIO_CODEC_XTAL_EN, 1);
-	}
-	s3c_gpio_setpull(GPIO_CODEC_XTAL_EN, S3C_GPIO_PULL_NONE);
-#endif
 
 	/* GPIO_MICBIAS_EN SETTTING */
 	// (HWREV <= REV06) MAIN & EAR MIC
@@ -239,14 +261,11 @@ int audio_init(void)
 
 int audio_power(int en, int check)
 {
-	if(check)
-	{
-		if(en)
-		{
+	if(check) {
+		if(en) {
 			//gpio_set_value(GPIO_CODEC_LDO_EN, 1);
 			//mdelay(10);
 
-#if 1 //defined CONFIG_M110S
 			if (HWREV<=3) {
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R03, 1);
 			} else {
@@ -254,15 +273,10 @@ int audio_power(int en, int check)
 				//s3c_gpio_setpin(GPIO_CODEC_XTAL_EN_R04, 1);
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R04, 1);
 			}
-#else // #elif defined CONFIG_M115S
-            s3c_gpio_cfgpin(GPIO_CODEC_XTAL_EN, S3C_GPIO_OUTPUT);
-			s3c_gpio_setpin(GPIO_CODEC_XTAL_EN, 1);
-#endif
 		} else {
 			//gpio_set_value(GPIO_CODEC_LDO_EN, 0);
 			//mdelay(125);
 
-#if 1 //defined CONFIG_M110S
 			if (HWREV<=3) {
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R03, 0);
 			} else {
@@ -270,22 +284,14 @@ int audio_power(int en, int check)
 				//s3c_gpio_setpin(GPIO_CODEC_XTAL_EN_R04, 0);
 				gpio_set_value(GPIO_CODEC_XTAL_EN_R04, 0);
 			}
-#else // #elif defined CONFIG_M115S
-            s3c_gpio_cfgpin(GPIO_CODEC_XTAL_EN, S3C_GPIO_OUTPUT);
-			s3c_gpio_setpin(GPIO_CODEC_XTAL_EN, 0);
-#endif
 		}
 	}
 
-#if 1 //defined CONFIG_M110S
 	if (HWREV<=3) {
 		printk(SND_KERN_DEBUG "[WM8994] rev3 LDO %d XTAL %d\n", gpio_get_value(GPIO_CODEC_LDO_EN), gpio_get_value(GPIO_CODEC_XTAL_EN_R03));
 	} else {
 		printk(SND_KERN_DEBUG "[WM8994] gpio en %d LDO %d XTAL %d\n", en, gpio_get_value(GPIO_CODEC_LDO_EN), gpio_get_value(GPIO_CODEC_XTAL_EN_R04));
 	}
-#else // #elif defined CONFIG_M115S
-    printk(SND_KERN_DEBUG "[WM8994] gpio en %d LDO %d XTAL %d\n", en, gpio_get_value(GPIO_CODEC_LDO_EN), gpio_get_value(GPIO_CODEC_XTAL_EN));
-#endif
 
 	return 0;
 }
@@ -303,10 +309,7 @@ void audio_ctrl_mic_bias_gpio(struct snd_soc_codec *codec, char callid)
 	if ( (wm8994->cur_path == BT) )
 		enable = 0;
 
-#if 1 //defined CONFIG_M110S
-	if (HWREV>=7)
-#endif
-	{
+	if (HWREV>=7) {
 		headset_state = get_headset_status();
 		if(enable) {
 			set_recording_status(1);
@@ -338,9 +341,7 @@ void audio_ctrl_mic_bias_gpio(struct snd_soc_codec *codec, char callid)
 		}
 
 		printk(SND_KERN_DEBUG "en|m|s|i :: %d|%d|%d|%c\n", enable, gpio_get_value(GPIO_MICBIAS_EN), gpio_get_value(GPIO_SUB_MICBIAS_EN), callid);
-	}
-#if 1 //defined CONFIG_M110S
-	else {
+	} else {
 		if (gpio_get_value(GPIO_MICBIAS_EN) == enable) {
 			DEBUG_LOG("return same value %d", enable);
 			return;
@@ -359,7 +360,6 @@ void audio_ctrl_mic_bias_gpio(struct snd_soc_codec *codec, char callid)
 
 		printk(SND_KERN_DEBUG "en/m %d %d\n", enable, gpio_get_value(GPIO_MICBIAS_EN));
 	}
-#endif
 }
 
 // If enable is false, set gpio to low on sleep
@@ -379,15 +379,11 @@ void audio_ctrl_sleep_gpio(int enable)
 	s3c_gpio_slp_cfgpin(GPIO_CODEC_LDO_EN, state);
 	s3c_gpio_slp_cfgpin(GPIO_MICBIAS_EN, state);
 
-#if 1 // defined CONFIG_M110S
 	if (HWREV<=3) {
         s3c_gpio_slp_cfgpin(GPIO_CODEC_XTAL_EN_R03, state);
     } else {
 		s3c_gpio_slp_cfgpin(GPIO_CODEC_XTAL_EN_R04, state);
 	}
-#else // #elif defined CONFIG_M115S
-    s3c_gpio_slp_cfgpin(GPIO_CODEC_XTAL_EN, state);
-#endif
 }
 
 static void wait_for_dc_servo(struct snd_soc_codec *codec, unsigned int op)
@@ -2817,13 +2813,19 @@ void close_output_path_all(struct snd_soc_codec *codec)
 		// 1CH // HPOUT1L_VOL mute
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
-		val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTL_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTL_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OUTPUT_VOLUME, val);
 
 		// 1DH // HPOUT1R_VOL mute
 		val = wm8994_read(codec, WM8994_RIGHT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1R_MUTE_N_MASK|WM8994_HPOUT1R_VOL_MASK);
-		val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTR_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_EAR_OUTPUTR_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OUTPUT_VOLUME, val);
 
 		// 2DH // DAC1L_TO_HPOUT1L, DAC1L_TO_MIXOUTL off
@@ -2882,16 +2884,21 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	val |= (TUNING_RCV_OUTMIX6_VOL<<WM8994_DACR_MIXOUTR_VOL_SHIFT);
 	wm8994_write(codec, WM8994_OUTPUT_MIXER_6, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
-		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_RCV_OPGAL_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_RCV_OPGAL_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_RCV_OPGAL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OPGA_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTR_MUTE_N_MASK|WM8994_MIXOUTR_VOL_MASK);
-		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_RCV_OPGAR_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_RCV_OPGAR_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_NONXP_RCV_OPGAR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OPGA_VOLUME, val);
 	}
 
@@ -2910,11 +2917,13 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	val |= (WM8994_DAC1_VU|TUNING_DAC1R_VOL);
 	wm8994_write(codec, WM8994_DAC1_RIGHT_VOLUME, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		val |= (TUNING_VOIP_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (TUNING_VOIP_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		else
+			val |= (TUNING_VOIP_NONXP_RCV_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -3004,12 +3013,14 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	val |= (WM8994_MIXINL_ENA|WM8994_IN1L_ENA);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
-		val |= (WM8994_IN1L_VU|TUNING_VOIP_RCV_INPUTMIX_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_RCV_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_NONXP_RCV_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 29H // MIXINL PGA // IN2L_TO_MIXINL MUTE, IN1L_TO_MIXINL UNMUTE, 0dB
@@ -3023,7 +3034,10 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 	// 400H // AIF1 ADC1 Left Volume // Gain Tuning // H/W req.
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_LEFT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1L_VOL_MASK);
-	val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL); // ADC Digital Gain
+	if (wm8994->voip_no_nxp_on == 0)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL); // ADC Digital Gain
+	else
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCL_VOL); // ADC Digital Gain
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1LP/N_TO_IN1L PGA
@@ -3115,26 +3129,37 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_CLASS_W_1, val);
 
 	// Headset Control
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
-		val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1R_MUTE_N_MASK|WM8994_HPOUT1R_VOL_MASK);
-		val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
-		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OPGA_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTR_MUTE_N_MASK|WM8994_MIXOUTR_VOL_MASK);
-		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAL_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OPGA_VOLUME, val);
 	}
 
@@ -3162,11 +3187,13 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 
 	msleep(5);// 20ms delay
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		else
+			val |= (TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -3273,12 +3300,14 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	val |= (WM8994_MIXINR_ENA|WM8994_IN1R_ENA);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// 1AH // IN1R PGA // IN1R UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_RIGHT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1R_MUTE_MASK|WM8994_IN1R_VOL_MASK);
-		val |= (WM8994_IN1R_VU|TUNING_VOIP_EAR_INPUTMIX_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_IN1R_VU|TUNING_VOIP_EAR_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1R_VU|TUNING_VOIP_NONXP_EAR_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_RIGHT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 2AH // MIXINR PGA // IN2R_TO_MIXINR MUTE, IN1R_TO_MIXINR UNMUTE, 0dB
@@ -3292,7 +3321,10 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 	// 401H // AIF1 ADC1 Right Volume
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_RIGHT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1R_VOL_MASK);
-	val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_EAR_AIF1ADCR_VOL); // ADC Digital Gain
+	if (wm8994->voip_no_nxp_on == 0)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_EAR_AIF1ADCR_VOL); // ADC Digital Gain
+	else
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_EAR_AIF1ADCR_VOL); // ADC Digital Gain
 	wm8994_write(codec, WM8994_AIF1_ADC1_RIGHT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1RP/N_TO_IN1R PGA
@@ -3384,26 +3416,37 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_CLASS_W_1, val);
 
 	// Headset Control
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_LEFT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1L_MUTE_N_MASK|WM8994_HPOUT1L_VOL_MASK);
-		val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_EAR_OUTPUTL_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1L_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OUTPUT_VOLUME);
 		val &= ~(WM8994_HPOUT1R_MUTE_N_MASK|WM8994_HPOUT1R_VOL_MASK);
-		val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_EAR_OUTPUTR_VOL);
+		else
+			val |= (WM8994_HPOUT1_VU|WM8994_HPOUT1R_MUTE_N|TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OUTPUT_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_LEFT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTL_MUTE_N_MASK|WM8994_MIXOUTL_VOL_MASK);
-		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_EAR_OPGAL_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTL_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAL_VOL);
 		wm8994_write(codec, WM8994_LEFT_OPGA_VOLUME, val);
 
 		val = wm8994_read(codec, WM8994_RIGHT_OPGA_VOLUME);
 		val &= ~(WM8994_MIXOUTR_MUTE_N_MASK|WM8994_MIXOUTR_VOL_MASK);
-		val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_EAR_OPGAR_VOL);
+		else
+			val |= (WM8994_MIXOUT_VU|WM8994_MIXOUTR_MUTE_N|TUNING_VOIP_NONXP_EAR_OPGAR_VOL);
 		wm8994_write(codec, WM8994_RIGHT_OPGA_VOLUME, val);
 	}
 
@@ -3431,11 +3474,13 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 
 	msleep(5);// 20ms delay
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (TUNING_VOIP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
+		else
+			val |= (TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 = 0dB, 01 = +6dB, 02 = +12dB, 03 = +18dB
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -3542,12 +3587,14 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	val |= (WM8994_MIXINL_ENA|WM8994_IN1L_ENA);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
-		val |= (WM8994_IN1L_VU|TUNING_VOIP_3P_INPUTMIX_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_3P_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_NONXP_3P_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 29H // MIXINL PGA // IN2L_TO_MIXINL MUTE, IN1L_TO_MIXINL UNMUTE, 0dB
@@ -3561,7 +3608,10 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 	// 400H // AIF1 ADC1 Left Volume // Gain Tuning // H/W req.
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_LEFT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1L_VOL_MASK);
-	val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL); // ADC Digital Gain
+	if (wm8994->voip_no_nxp_on == 0)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL); // ADC Digital Gain
+	else
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCL_VOL); // ADC Digital Gain
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1LP/N_TO_IN1L PGA
@@ -3632,11 +3682,13 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	//val |= (TUNING_SPKMIXR_ATTEN);
 	wm8994_write(codec, WM8994_SPKMIXR_ATTENUATION, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_SPEAKER_VOLUME_LEFT);
 		val &= ~(WM8994_SPKOUTL_MUTE_N_MASK|WM8994_SPKOUTL_VOL_MASK);
-		val |= (WM8994_SPKOUT_VU|WM8994_SPKOUTL_MUTE_N|TUNING_VOIP_SPKL_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_SPKOUT_VU|WM8994_SPKOUTL_MUTE_N|TUNING_VOIP_SPKL_VOL);
+		else
+			val |= (WM8994_SPKOUT_VU|WM8994_SPKOUTL_MUTE_N|TUNING_VOIP_NONXP_SPKL_VOL);
 		wm8994_write(codec, WM8994_SPEAKER_VOLUME_LEFT, val);
 
 		val = wm8994_read(codec, WM8994_SPEAKER_VOLUME_RIGHT);
@@ -3646,7 +3698,10 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 
 		val = wm8994_read(codec, WM8994_CLASSD);
 		val &= ~(WM8994_SPKOUTL_BOOST_MASK);
-		val |= (TUNING_VOIP_CLASSD_VOL<<WM8994_SPKOUTL_BOOST_SHIFT);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (TUNING_VOIP_CLASSD_VOL<<WM8994_SPKOUTL_BOOST_SHIFT);
+		else
+			val |= (TUNING_VOIP_NONXP_CLASSD_VOL<<WM8994_SPKOUTL_BOOST_SHIFT);
 		wm8994_write(codec, WM8994_CLASSD, val);
 	}
 
@@ -3669,11 +3724,13 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	val |= (WM8994_DAC1_VU|TUNING_DAC1R_VOL);
 	wm8994_write(codec, WM8994_DAC1_RIGHT_VOLUME, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		val = wm8994_read(codec, WM8994_AIF1_CONTROL_2);
 		val &= ~(WM8994_AIF1DAC_BOOST_MASK);
-		val |= (TUNING_VOIP_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 0dB 01 +6dB 02 +12dB 03 +18dB
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (TUNING_VOIP_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 0dB 01 +6dB 02 +12dB 03 +18dB
+		else
+			val |= (TUNING_VOIP_NONXP_SPK_AIF1DAC_BOOST<<WM8994_AIF1DAC_BOOST_SHIFT); // 00 0dB 01 +6dB 02 +12dB 03 +18dB
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
@@ -3743,12 +3800,14 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	val |= (WM8994_MIXINL_ENA|WM8994_IN1L_ENA);
 	wm8994_write(codec, WM8994_POWER_MANAGEMENT_2, val);
 
-	if(!wm8994->testmode_config_flag)
-	{
+	if(!wm8994->testmode_config_flag) {
 		// 18H // IN1L PGA // IN1L UNMUTE, SET VOL
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME);
 		val &= ~(WM8994_IN1L_MUTE_MASK|WM8994_IN1L_VOL_MASK);
-		val |= (WM8994_IN1L_VU|TUNING_VOIP_SPK_INPUTMIX_VOL);
+		if (wm8994->voip_no_nxp_on == 0)
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_SPK_INPUTMIX_VOL);
+		else
+			val |= (WM8994_IN1L_VU|TUNING_VOIP_NONXP_SPK_INPUTMIX_VOL);
 		wm8994_write(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME, val);
 
 		// 29H // MIXINL PGA // IN2L_TO_MIXINL MUTE, IN1L_TO_MIXINL UNMUTE, 0dB
@@ -3762,7 +3821,10 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 	// 400H // AIF1 ADC1 Left Volume // Gain Tuning // H/W req.
 	val = wm8994_read(codec, WM8994_AIF1_ADC1_LEFT_VOLUME);
 	val &= ~(WM8994_AIF1ADC1L_VOL_MASK);
-	val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL); // ADC Digital Gain
+	if (wm8994->voip_no_nxp_on == 0)
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL); // ADC Digital Gain
+	else
+		val |= (WM8994_AIF1ADC1_VU|TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCL_VOL); // ADC Digital Gain
 	wm8994_write(codec, WM8994_AIF1_ADC1_LEFT_VOLUME, val);
 
 	// 28H // INPUT MIXER // IN1LP/N_TO_IN1L PGA

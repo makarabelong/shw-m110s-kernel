@@ -135,6 +135,8 @@ extern struct platform_device s3c_device_usb_mass_storage;
 #define ANDROID_KIES_CONFIG_STRING	 "ACM + UMS (SAMSUNG KIES mode)"
 #define ANDROID_UMS_CONFIG_STRING	 "UMS Only (Not debugging mode)"
 #define ANDROID_MTP_CONFIG_STRING	 "MTP Only (Not debugging mode)"
+#define ANDROID_ACC_CONFIG_STRING	 "ACCESSORY Only (Not debugging mode)"
+
 #ifdef CONFIG_USB_ANDROID_SAMSUNG_RNDIS_WITH_MS_COMPOSITE
 #define ANDROID_RNDIS_CONFIG_STRING	 "RNDIS + UMS (Not debugging mode)"
 #else
@@ -147,7 +149,7 @@ extern struct platform_device s3c_device_usb_mass_storage;
 #define USBSTATUS_ASKON			0x4
 #define USBSTATUS_VTP				0x8
 #define USBSTATUS_ADB				0x10
-#define USBSTATUS_DM				0x20
+#define USBSTATUS_ACCESSORY				0x20
 #define USBSTATUS_ACM				0x40
 #define USBSTATUS_SAMSUNG_KIES_REAL		0x80
 
