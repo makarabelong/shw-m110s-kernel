@@ -2602,14 +2602,12 @@ dhd_module_init(void)
 	error = wifi_add_dev();
 	if (error) {
 		DHD_ERROR(("%s: platform_driver_register failed\n", __FUNCTION__));
-		goto failed;
+		return -EINVAL;
 	}
 
 	/* Waiting callback after platform_driver_register is done or exit with error */
 	if (down_timeout(&wifi_control_sem,  msecs_to_jiffies(5000)) != 0) {
 		DHD_ERROR(("%s: platform_driver_register timeout\n", __FUNCTION__));
-		/* renove device */
-		wifi_del_dev();
 		goto failed;
 	}
 #endif /* #if defined(CUSTOMER_HW_SAMSUNG) && defined(CONFIG_WIFI_CONTROL_FUNC) */
@@ -2643,6 +2641,8 @@ dhd_module_init(void)
 failed:
 	/* turn off power and exit */
 	dhd_customer_gpio_wlan_ctrl(WLAN_POWER_OFF);
+	/* renove device */
+	wifi_del_dev();
 	return -EINVAL;
 }
 
