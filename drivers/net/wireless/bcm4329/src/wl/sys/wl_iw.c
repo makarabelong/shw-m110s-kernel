@@ -6988,8 +6988,9 @@ static int get_softap_auto_channel(struct net_device *dev, struct ap_profile *ap
 				if (retry++ < 3)
 					goto get_channel_retry;
 				else {
-					WL_ERROR(("can't get auto channel sel, err = %d, \
-						chosen = %d\n", ret, chosen));
+					res = -1;
+					WL_ERROR(("can't get auto channel sel, err = %d, " \
+						"chosen = %d\n", ret, chosen));
 					goto fail;
 				}
 			}
