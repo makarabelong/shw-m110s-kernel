@@ -2158,7 +2158,7 @@ void wm8994_set_voicecall_receiver(struct snd_soc_codec *codec)
 	/* CHARGE PUMP */
 	wm8994_write(codec, 0x4C, 0x1F25); // Charge Pump
 
-	wm8994_write(codec, 0x02, 0x6240); // PM_2 // TSHUT_ENA, TSHUT_OPDIS, MIXINL_ENA, IN1L_ENA
+	wm8994_write(codec, 0x02, 0x6340); // PM_2 // TSHUT_ENA, TSHUT_OPDIS, MIXINL/R_ENA, IN1L_ENA [VJ14-1118]
 
 	/* DIGITAL - AIF1DAC1 */
 	wm8994_write(codec, 0x05, 0x0303); // AIF1DAC1L/R_ENA, DAC1L/R_ENA
@@ -2414,7 +2414,7 @@ void wm8994_set_voicecall_headphone(struct snd_soc_codec *codec)
 		// unmute left pga, set volume
 		val = wm8994_read(codec, WM8994_INPUT_MIXER_3);
 		val&= ~(WM8994_IN1L_TO_MIXINL_MASK|WM8994_IN1L_MIXINL_VOL_MASK|WM8994_MIXOUTL_MIXINL_VOL_MASK);
-		val |= (WM8994_IN1L_TO_MIXINL); //0db
+		val |= (WM8994_IN1L_TO_MIXINL|WM8994_IN1L_MIXINL_VOL); // +30db IN1L_MIXINL_VOL Boost On for recording [VJ17-1522]
 		wm8994_write(codec, WM8994_INPUT_MIXER_3, val);
 
 		wm8994_write(codec, WM8994_INPUT_MIXER_6, 0x0001); // 2Ch // [DF29-1315] // IN2LRP_MIXINR_VOL 0x01 (-12dB)
@@ -2571,7 +2571,7 @@ void wm8994_set_voicecall_speaker(struct snd_soc_codec *codec)
 		// Volume Control - Input
 		val = wm8994_read(codec, WM8994_INPUT_MIXER_3); // IN1L_TO_MIXINL 0dB
 		val &= ~(WM8994_IN1L_TO_MIXINL_MASK|WM8994_IN1L_MIXINL_VOL_MASK|WM8994_MIXOUTL_MIXINL_VOL_MASK);
-		val |= (WM8994_IN1L_TO_MIXINL); //0db
+		val |= (WM8994_IN1L_TO_MIXINL|WM8994_IN1L_MIXINL_VOL); // +30db IN1L_MIXINL_VOL Boost On for recording [VJ17-1522]
 		wm8994_write(codec, WM8994_INPUT_MIXER_3, val);
 
 		val = wm8994_read(codec, WM8994_LEFT_LINE_INPUT_1_2_VOLUME); // IN1LN/P(MAIN_MIC_P/N) // [DB16-2232] 0x0B(0.0dB) HW req.

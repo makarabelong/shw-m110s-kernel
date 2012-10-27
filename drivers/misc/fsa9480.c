@@ -353,6 +353,10 @@ static void fsa9480_detect_dev(struct fsa9480_usbsw *usbsw)
 			if (pdata->uart_cb)
 				pdata->uart_cb(FSA9480_ATTACHED);
 
+			if ((val2 & DEV_T2_UART_MASK) && pdata->jig_cb) {
+				pdata->jig_cb(FSA9480_ATTACHED);
+			}
+
 			if (usbsw->mansw) {
 				ret = i2c_smbus_write_byte_data(client,
 					FSA9480_REG_MANSW1, SW_UART);
@@ -407,6 +411,10 @@ static void fsa9480_detect_dev(struct fsa9480_usbsw *usbsw)
 				usbsw->dev2 & DEV_T2_UART_MASK) {
 			if (pdata->uart_cb)
 				pdata->uart_cb(FSA9480_DETACHED);
+
+			if ((usbsw->dev2 & DEV_T2_UART_MASK) && pdata->jig_cb)
+				pdata->jig_cb(FSA9480_DETACHED);
+			
 		/* CHARGER */
 		} else if (usbsw->dev1 & DEV_T1_CHARGER_MASK) {
 			if (pdata->charger_cb)

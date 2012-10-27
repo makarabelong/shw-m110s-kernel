@@ -271,35 +271,35 @@ static int bthid_ioctl(struct inode *inode, struct file *file, unsigned int cmd,
         p_dev->hid->version = di.version;
         p_dev->hid->country = di.ctry_code;
     } else if (cmd == BTHID_IOCTL_RPT_DSCP) {
-        p_ctrl = kmalloc(sizeof(struct bthid_ctrl), GFP_KERNEL);
-        if (p_ctrl == NULL)
-        {
-            return -ENOMEM;
-        }
+    p_ctrl = kmalloc(sizeof(struct bthid_ctrl), GFP_KERNEL);
+    if (p_ctrl == NULL)
+    {
+        return -ENOMEM;
+    }
+
+    if (copy_from_user(p_ctrl, (void __user *) arg, sizeof(struct bthid_ctrl)) != 0)
+    {
+        kfree(p_ctrl);
+        return -EFAULT;
+    }
+
+    if (p_ctrl->size <= 0) 
+    {
+        printk("Oops: Invalid BT HID report descriptor size %d\n", p_ctrl->size); 
+
+        kfree(p_ctrl);
+        return -EINVAL;
+    }
     
-        if (copy_from_user(p_ctrl, (void __user *) arg, sizeof(struct bthid_ctrl)) != 0)
-        {
-            kfree(p_ctrl);
-            return -EFAULT;
-        }
-    
-        if (p_ctrl->size <= 0) 
-        {
-            printk("Oops: Invalid BT HID report descriptor size %d\n", p_ctrl->size); 
-    
-            kfree(p_ctrl);
-            return -EINVAL;
-        }
-        
             if (!p_dev->hid) {
-        p_dev->hid = hid_allocate_device();
-        if (p_dev->hid == NULL)
-        {
-            printk("Oops: Failed to allocation HID device.\n");
-    
-            kfree(p_ctrl);
-            return -ENOMEM;
-        }
+    p_dev->hid = hid_allocate_device();
+    if (p_dev->hid == NULL)
+    {
+        printk("Oops: Failed to allocation HID device.\n");
+
+        kfree(p_ctrl);
+        return -ENOMEM;
+    }
     }
     
     p_dev->hid->bus         = BUS_BLUETOOTH;
