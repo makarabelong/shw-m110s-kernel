@@ -680,7 +680,6 @@ int __AddDataTS(unsigned char* pData, unsigned long dwDataSize)
             if(pData[j]==0x47)
             {                
                 printk(KERN_DEBUG "!!!!!!!!!!!!! first sync j = %d !!!!!!!!!!!!\n",j);
-                _tdmb_make_result(DMB_TS_PACKET_RESYNC, sizeof(int), &j);
                 maxi = (dwDataSize - j) / TS_PACKET_SIZE;
                 TSBuffpos = (dwDataSize - j) % TS_PACKET_SIZE;
                 TDMB_AddDataToRing(&pData[j], maxi * TS_PACKET_SIZE);

@@ -227,7 +227,7 @@ static int check_mem_permission(struct task_struct *task)
 	return -EPERM;
 }
 
-struct mm_struct *mm_for_maps(struct task_struct *task)
+static struct mm_struct *mm_access(struct task_struct *task, unsigned int mode)
 {
 	struct mm_struct *mm;
 
@@ -236,7 +236,7 @@ struct mm_struct *mm_for_maps(struct task_struct *task)
 
 	mm = get_task_mm(task);
 	if (mm && mm != current->mm &&
-			!ptrace_may_access(task, PTRACE_MODE_READ) &&
+			!ptrace_may_access(task, mode) &&
 			!capable(CAP_SYS_RESOURCE)) {
 		mmput(mm);
 		mm = NULL;
@@ -244,6 +244,11 @@ struct mm_struct *mm_for_maps(struct task_struct *task)
 	mutex_unlock(&task->cred_guard_mutex);
 
 	return mm;
+}
+
+struct mm_struct *mm_for_maps(struct task_struct *task)
+{
+    return mm_access(task, PTRACE_MODE_READ);
 }
 
 static int proc_pid_cmdline(struct task_struct *task, char * buffer)
@@ -769,7 +774,15 @@ static const struct file_operations proc_single_file_operations = {
 
 static int mem_open(struct inode* inode, struct file* file)
 {
-	file->private_data = (void*)((long)current->self_exec_id);
+	struct task_struct *task = get_proc_task(file->f_path.dentry->d_inode);
+       struct mm_struct *mm;
+       if (!task)
+           return -ESRCH;
+       mm = mm_access(task, PTRACE_MODE_ATTACH);
+       put_task_struct(task);
+       if (IS_ERR(mm))
+           return PTR_ERR(mm);
+       file->private_data = mm;
 	return 0;
 }
 
@@ -908,11 +921,20 @@ loff_t mem_lseek(struct file *file, loff_t offset, int orig)
 	return file->f_pos;
 }
 
+static int mem_release(struct inode *inode, struct file *file)
+{
+    struct mm_struct *mm = file->private_data;
+
+    mmput(mm);
+    return 0;
+}
+
 static const struct file_operations proc_mem_operations = {
 	.llseek		= mem_lseek,
 	.read		= mem_read,
 	.write		= mem_write,
 	.open		= mem_open,
+	.release         = mem_release,
 };
 
 static ssize_t environ_read(struct file *file, char __user *buf,

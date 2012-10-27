@@ -1803,7 +1803,7 @@ wl_iw_get_rssi(
 	static wlc_ssid_t ssid = {0};
 	int error = 0;
 	char *p = extra;
-	static char ssidbuf[SSID_FMT_BUF_LEN];
+//	static char ssidbuf[SSID_FMT_BUF_LEN];
 	scb_val_t scb_val;
 
 	bzero(&scb_val, sizeof(scb_val_t));
@@ -1822,8 +1822,9 @@ wl_iw_get_rssi(
 	}
 	WL_ASSOC(("%s ssid_len:%d, rssi:%d\n", __FUNCTION__, ssid.SSID_len, rssi));
 
-	wl_format_ssid(ssidbuf, ssid.SSID, dtoh32(ssid.SSID_len));
-	p += snprintf(p, MAX_WX_STRING, "%s rssi %d ", ssidbuf, rssi);
+	//wl_format_ssid(ssidbuf, ssid.SSID, dtoh32(ssid.SSID_len));
+	//p += snprintf(p, MAX_WX_STRING, "%s rssi %d ", ssidbuf, rssi);
+	p += snprintf(p, MAX_WX_STRING, "%s rssi %d ", ssid.SSID, rssi);
 	wrqu->data.length = p - extra + 1;
 
 	return error;

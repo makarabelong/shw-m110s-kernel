@@ -1005,10 +1005,7 @@ int rndis_function_bind_config(struct usb_configuration *c)
 #else
 	printk(KERN_INFO
 #endif
-		"rndis_function_bind_config MAC: %02X:%02X:%02X:%02X:%02X:%02X\n",
-		rndis_pdata->ethaddr[0], rndis_pdata->ethaddr[1],
-		rndis_pdata->ethaddr[2], rndis_pdata->ethaddr[3],
-		rndis_pdata->ethaddr[4], rndis_pdata->ethaddr[5]);
+		"rndis_function_bind_config\n");
 
 	ret = gether_setup(c->cdev->gadget, rndis_pdata->ethaddr);
 	CSY_DBG("gether_setup ret=%d\n",ret);

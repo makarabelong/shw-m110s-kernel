@@ -2478,9 +2478,9 @@ dhd_net_attach(dhd_pub_t *dhdp, int ifidx)
 		goto fail;
 	}
 
-	printf("%s: Broadcom Dongle Host Driver mac=%.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n", net->name,
+	DHD_INFO(("%s: Broadcom Dongle Host Driver mac=%.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n", net->name,
 	       dhd->pub.mac.octet[0], dhd->pub.mac.octet[1], dhd->pub.mac.octet[2],
-	       dhd->pub.mac.octet[3], dhd->pub.mac.octet[4], dhd->pub.mac.octet[5]);
+	       dhd->pub.mac.octet[3], dhd->pub.mac.octet[4], dhd->pub.mac.octet[5]));
 
 #if defined(CONFIG_WIRELESS_EXT)
 #if defined(CONFIG_FIRST_SCAN)
@@ -3365,7 +3365,7 @@ start_readmac:
 		/* Reading the MAC Address from .nvmac.info file( the existed file or just created file)*/
 		ret = kernel_read(fpnv, 0, buf, 18);
 		buf[17] ='\0';   // to prevent abnormal string display when mac address is displayed on the screen. 
-		printk("Read MAC : [%s] [%d] \r\n" , buf, strncmp(buf , "00:00:00:00:00:00" , 17));
+		DHD_INFO(("Read MAC : [%s] [%d] \r\n" , buf, strncmp(buf , "00:00:00:00:00:00" , 17)));
 		if(strncmp(buf , "00:00:00:00:00:00" , 17) == 0) {
 			filp_close(fpnv, NULL);
 			goto start_readmac;

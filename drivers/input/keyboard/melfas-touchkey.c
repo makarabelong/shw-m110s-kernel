@@ -68,7 +68,7 @@ Melfas touchkey register
 
 extern unsigned int HWREV;
 static int touchkey_keycode[3] = {NULL, TOUCHKEY_KEYCODE_MENU, TOUCHKEY_KEYCODE_BACK};
-static u8 activation_onoff = 1;  // 0:deactivate   1:activate
+static u32 activation_onoff = 1;  // 0:deactivate   1:activate
 static u8 is_suspending = 0;
 static u8 user_press_on = 0;
 static u8 touchkey_dead = 0;
@@ -505,12 +505,13 @@ static ssize_t touchkey_back_show(struct device *dev,
 
 static ssize_t touch_led_control(struct device *dev, struct device_attribute *attr, const char *buf, size_t size)
 {
-	u8 data;
+	u32 data;
 	if(user_press_on)
 		return size;
-	
+
 	sscanf(buf, "%d", &data);
-	i2c_touchkey_write(&data, 1); // LED on(data=1) or off(data=2)
+	i2c_touchkey_write((u8 *)&data, 1); // LED on(data=1) or off(data=2)
+    
 	return size;
 }
 
