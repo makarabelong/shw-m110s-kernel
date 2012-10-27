@@ -42,17 +42,17 @@
 
 // VoIP Call
 #define TUNING_VOIP_RCV_AIF1DAC_BOOST           0x01 // 301h // [DJ02-1720]
-#define TUNING_VOIP_RCV_OPGAL_VOL               0x3C // 20h // [DL08-1435] VoIP 0x3C (+3dB)
+#define TUNING_VOIP_RCV_OPGAL_VOL               0x3C // 20h // [DL08-1435] 0x3C (+3dB)
 #define TUNING_VOIP_RCV_OPGAR_VOL               0x3C // 21h //
 
 // VoIP GTalk Call (nxp_ctrl 1, NXP On)
 #define TUNING_VOIP_GTALK_RCV_AIF1DAC_BOOST     0x01 // 301h // [VF25-0910]
-#define TUNING_VOIP_GTALK_RCV_OPGAL_VOL         0x3C // 20h // [VF25-0910] VoIP 0x3C (+3dB)
+#define TUNING_VOIP_GTALK_RCV_OPGAL_VOL         0x3C // 20h // [VF25-0910] 0x3C (+3dB)
 #define TUNING_VOIP_GTALK_RCV_OPGAR_VOL         0x3C // 21h //
 
 // VoIP No Nxp Call (nxp_ctrl 2)
 #define TUNING_VOIP_NONXP_RCV_AIF1DAC_BOOST     0x01 // 301h // [VF14-1816]
-#define TUNING_VOIP_NONXP_RCV_OPGAL_VOL         0x3E // 20h // [VF22-1651] VoIP 0x3E (+5dB)
+#define TUNING_VOIP_NONXP_RCV_OPGAL_VOL         0x3E // 20h // [VF22-1651] 0x3E (+5dB)
 #define TUNING_VOIP_NONXP_RCV_OPGAR_VOL         0x3E // 21h //
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,25 +87,25 @@
 #define TUNING_CALL_OPGAR_VOL                   0x39 // 21h
 
 // VoIP Call (3pole/4pole)
-#define TUNING_VOIP_EAR_OUTPUTL_VOL             0x34 // 1Ch // [DL08-1435] VoIP 0x34 (-5dB)
+#define TUNING_VOIP_EAR_OUTPUTL_VOL             0x34 // 1Ch // [DL08-1435] 0x34 (-5dB)
 #define TUNING_VOIP_EAR_OUTPUTR_VOL             0x34 // 1Dh //
-#define TUNING_VOIP_EAR_OPGAL_VOL               0x39 // 20h // [DL08-1435] VoIP 0x39 (0dB)
+#define TUNING_VOIP_EAR_OPGAL_VOL               0x39 // 20h // [DL08-1435] 0x39 (0dB)
 #define TUNING_VOIP_EAR_OPGAR_VOL               0x39 // 21h //
-#define TUNING_VOIP_EAR_AIF1DAC_BOOST           0x00 // 301h // [DL08-1435] VoIP 0x00 (0dB)
+#define TUNING_VOIP_EAR_AIF1DAC_BOOST           0x00 // 301h // [DL08-1435] 0x00 (0dB)
 
 // VoIP GTalk Call (nxp_ctrl 1, NXP On)
-#define TUNING_VOIP_GTALK_EAR_OUTPUTL_VOL       0x34 // 1Ch // [VF25-0910] VoIP 0x34 (-5dB)
-#define TUNING_VOIP_GTALK_EAR_OUTPUTR_VOL       0x34 // 1Dh //
-#define TUNING_VOIP_GTALK_EAR_OPGAL_VOL         0x39 // 20h // [VF25-0910] VoIP 0x39 (0dB)
+#define TUNING_VOIP_GTALK_EAR_OUTPUTL_VOL       0x37 // 1Ch // [VH04-1852] 0x37 (-2dB)
+#define TUNING_VOIP_GTALK_EAR_OUTPUTR_VOL       0x37 // 1Dh //
+#define TUNING_VOIP_GTALK_EAR_OPGAL_VOL         0x39 // 20h // [VF25-0910] 0x39 (0dB)
 #define TUNING_VOIP_GTALK_EAR_OPGAR_VOL         0x39 // 21h //
-#define TUNING_VOIP_GTALK_EAR_AIF1DAC_BOOST     0x00 // 301h // [VF25-0910] VoIP 0x00 (0dB)
+#define TUNING_VOIP_GTALK_EAR_AIF1DAC_BOOST     0x01 // 301h // [VH04-1852] 0x01 (+6dB)
 
 // VoIP No Nxp Call (nxp_ctrl 2)(3pole/4pole)
-#define TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL       0x39 // 1Ch // [VF22-1651] VoIP 0x39 (0dB)
+#define TUNING_VOIP_NONXP_EAR_OUTPUTL_VOL       0x39 // 1Ch // [VF22-1651] 0x39 (0dB)
 #define TUNING_VOIP_NONXP_EAR_OUTPUTR_VOL       0x39 // 1Dh //
-#define TUNING_VOIP_NONXP_EAR_OPGAL_VOL         0x39 // 20h // [VF14-1816] VoIP 0x39 (0dB)
+#define TUNING_VOIP_NONXP_EAR_OPGAL_VOL         0x39 // 20h // [VF14-1816] 0x39 (0dB)
 #define TUNING_VOIP_NONXP_EAR_OPGAR_VOL         0x39 // 21h //
-#define TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST     0x00 // 301h // [VF14-1816] VoIP 0x00 (0dB)
+#define TUNING_VOIP_NONXP_EAR_AIF1DAC_BOOST     0x00 // 301h // [VF14-1816] 0x00 (0dB)
 
 #define TUNING_HPOUTMIX_VOL                     0x00
 
@@ -129,9 +129,9 @@
 #define TUNING_VOIP_SPK_AIF1DAC_BOOST           0x01 // 301h // [DL08-1435] 0x01 (+6dB)
 
 // VoIP GTalk Call (nxp_ctrl 1, NXP On)
-#define TUNING_VOIP_GTALK_SPKL_VOL              0x3C // 26h // [VF25-0910] 0x3C (+3dB)
-#define TUNING_VOIP_GTALK_CLASSD_VOL            0x06 // 25h // [VF25-0910] 0x06 (+9dB)
-#define TUNING_VOIP_GTALK_SPK_AIF1DAC_BOOST     0x01 // 301h // [VF25-0910] 0x01 (+6dB)
+#define TUNING_VOIP_GTALK_SPKL_VOL              0x3F // 26h // [VF25-0910] 0x3C (+3dB)
+#define TUNING_VOIP_GTALK_CLASSD_VOL            0x07 // 25h // [VF25-0910] 0x06 (+9dB)
+#define TUNING_VOIP_GTALK_SPK_AIF1DAC_BOOST     0x02 // 301h // [VH04-1852] 0x02 (+12dB)
 
 // VoIP No Nxp Call (nxp_ctrl 2)
 #define TUNING_VOIP_NONXP_SPKL_VOL              0x39 // 26h // [VF22-2001] 0x39 (+0dB)
@@ -163,42 +163,42 @@
 #define TUNING_CALL_SPK_INPUTMIX_VOL            0x0B // 18h
 
 // VoIP Call (RCV/SPK/3Pole)
-#define TUNING_VOIP_RCV_INPUTMIX_VOL            0x15 // 18h // [DJ22-2243] VoIP 0x15(+15.0dB)
-#define TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL       0xDA // 400h // [DL24-1836] VoIP 0xDA (+9.750dB)
+#define TUNING_VOIP_RCV_INPUTMIX_VOL            0x15 // 18h // [DJ22-2243] 0x15(+15.0dB)
+#define TUNING_VOIP_MAIN_RCV_AIF1ADCL_VOL       0xDA // 400h // [DL24-1836] 0xDA (+9.750dB)
 #define TUNING_VOIP_MAIN_RCV_AIF1ADCR_VOL       0xDA // 401h
 
-#define TUNING_VOIP_SPK_INPUTMIX_VOL            0x17 // 18h // [DK19-1658] VoIP 0x17 (+18.0dB)
-#define TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL       0xCD // 400h // [DL24-1836] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_SPK_INPUTMIX_VOL            0x17 // 18h // [DK19-1658] 0x17 (+18.0dB)
+#define TUNING_VOIP_MAIN_SPK_AIF1ADCL_VOL       0xCD // 400h // [DL24-1836] 0xCD (+4.875dB)
 #define TUNING_VOIP_MAIN_SPK_AIF1ADCR_VOL       0xCD // 401h
 
-#define TUNING_VOIP_3P_INPUTMIX_VOL             0x17 // 18h // [DK19-1658] VoIP 0x17 (+18.0dB)
-#define TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL        0xCD // 400h // [DL24-1836] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_3P_INPUTMIX_VOL             0x17 // 18h // [DK19-1658] 0x17 (+18.0dB)
+#define TUNING_VOIP_MAIN_3P_AIF1ADCL_VOL        0xCD // 400h // [DL24-1836] 0xCD (+4.875dB)
 #define TUNING_VOIP_MAIN_3P_AIF1ADCR_VOL        0xCD // 401h
 
 // VoIP GTalk Call (nxp_ctrl 1, NXP On)
-#define TUNING_VOIP_GTALK_RCV_INPUTMIX_VOL      0x15 // 18h // [VF25-0910] VoIP 0x15 (+15.0dB)
-#define TUNING_VOIP_GTALK_MAIN_RCV_AIF1ADCL_VOL 0xDA // 400h // [VF25-0910] VoIP 0xDA (+9.750dB)
+#define TUNING_VOIP_GTALK_RCV_INPUTMIX_VOL      0x15 // 18h // [VF25-0910] 0x15 (+15.0dB)
+#define TUNING_VOIP_GTALK_MAIN_RCV_AIF1ADCL_VOL 0xDA // 400h // [VF25-0910] 0xDA (+9.750dB)
 #define TUNING_VOIP_GTALK_MAIN_RCV_AIF1ADCR_VOL 0xDA // 401h
 
-#define TUNING_VOIP_GTALK_SPK_INPUTMIX_VOL      0x17 // 18h // [VF25-0910] VoIP 0x17 (+18.0dB)
-#define TUNING_VOIP_GTALK_MAIN_SPK_AIF1ADCL_VOL 0xCD // 400h // [VF25-0910] VoIP 0xCD (+4.875dB)
-#define TUNING_VOIP_GTALK_MAIN_SPK_AIF1ADCR_VOL 0xCD // 401h
+#define TUNING_VOIP_GTALK_SPK_INPUTMIX_VOL      0x17 // 18h // [VF25-0910] 0x17 (+18.0dB)
+#define TUNING_VOIP_GTALK_MAIN_SPK_AIF1ADCL_VOL 0xDE // 400h // [VH04-1852] 0xDE (+11.250dB)
+#define TUNING_VOIP_GTALK_MAIN_SPK_AIF1ADCR_VOL 0xDE // 401h
 
-#define TUNING_VOIP_GTALK_3P_INPUTMIX_VOL       0x17 // 18h // [VF25-0910] VoIP 0x17 (+18.0dB)
-#define TUNING_VOIP_GTALK_MAIN_3P_AIF1ADCL_VOL  0xCD // 400h // [VF25-0910] VoIP 0xCD (+4.875dB)
-#define TUNING_VOIP_GTALK_MAIN_3P_AIF1ADCR_VOL  0xCD // 401h
+#define TUNING_VOIP_GTALK_3P_INPUTMIX_VOL       0x17 // 18h // [VF25-0910] 0x17 (+18.0dB)
+#define TUNING_VOIP_GTALK_MAIN_3P_AIF1ADCL_VOL  0xDE // 400h // [VH11-1055] 0xDE (+11.250dB)
+#define TUNING_VOIP_GTALK_MAIN_3P_AIF1ADCR_VOL  0xDE // 401h
 
 // VoIP No Nxp Call (nxp_ctrl 2)(RCV/SPK/3Pole)
-#define TUNING_VOIP_NONXP_RCV_INPUTMIX_VOL      0x15 // 18h // [VF14-1816] VoIP 0x15 (+15.0dB)
-#define TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCL_VOL 0xDA // 400h // [VF14-1816] VoIP 0xDA (+9.750dB)
+#define TUNING_VOIP_NONXP_RCV_INPUTMIX_VOL      0x15 // 18h // [VF14-1816] 0x15 (+15.0dB)
+#define TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCL_VOL 0xDA // 400h // [VF14-1816] 0xDA (+9.750dB)
 #define TUNING_VOIP_NONXP_MAIN_RCV_AIF1ADCR_VOL 0xDA // 401h
 
-#define TUNING_VOIP_NONXP_SPK_INPUTMIX_VOL      0x17 // 18h // [VF14-1816] VoIP 0x17 (+18.0dB)
-#define TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCL_VOL 0xCD // 400h // [VF14-1816] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_NONXP_SPK_INPUTMIX_VOL      0x17 // 18h // [VF14-1816] 0x17 (+18.0dB)
+#define TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCL_VOL 0xCD // 400h // [VF14-1816] 0xCD (+4.875dB)
 #define TUNING_VOIP_NONXP_MAIN_SPK_AIF1ADCR_VOL 0xCD // 401h
 
-#define TUNING_VOIP_NONXP_3P_INPUTMIX_VOL       0x17 // 18h // [VF14-1816] VoIP 0x17 (+18.0dB)
-#define TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCL_VOL  0xCD // 400h // [VF14-1816] VoIP 0xCD (+4.875dB)
+#define TUNING_VOIP_NONXP_3P_INPUTMIX_VOL       0x17 // 18h // [VF14-1816] 0x17 (+18.0dB)
+#define TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCL_VOL  0xCD // 400h // [VF14-1816] 0xCD (+4.875dB)
 #define TUNING_VOIP_NONXP_MAIN_3P_AIF1ADCR_VOL  0xCD // 401h
 
 // Ear
@@ -216,18 +216,18 @@
 #define TUNING_RECOGNITION_EAR_AIF1ADCR_VOL     0xC0 // 401
 
 // VoIP Call (4Pole)
-#define TUNING_VOIP_EAR_INPUTMIX_VOL            0x15 // 1Ah // [DJ22-2243] VoIP 0x15 (+15.0dB)
-#define TUNING_VOIP_EAR_AIF1ADCL_VOL            0xE7 // 400h // [DL24-1836] VoIP 0xE7 (+14.625dB)
+#define TUNING_VOIP_EAR_INPUTMIX_VOL            0x15 // 1Ah // [DJ22-2243] 0x15 (+15.0dB)
+#define TUNING_VOIP_EAR_AIF1ADCL_VOL            0xE7 // 400h // [DL24-1836] 0xE7 (+14.625dB)
 #define TUNING_VOIP_EAR_AIF1ADCR_VOL            0xE7 // 401h
 
 // VoIP GTalk Call (nxp_ctrl 1, NXP On)(4Pole)
-#define TUNING_VOIP_GTALK_EAR_INPUTMIX_VOL      0x15 // 1Ah // [VF25-0910] VoIP 0x15 (+15.0dB)
-#define TUNING_VOIP_GTALK_EAR_AIF1ADCL_VOL      0xE7 // 400h // [VF25-0910] VoIP 0xE7 (+14.625dB)
-#define TUNING_VOIP_GTALK_EAR_AIF1ADCR_VOL      0xE7 // 401h
+#define TUNING_VOIP_GTALK_EAR_INPUTMIX_VOL      0x17 // 1Ah // [VH11-1055] 0x17 (+18.0dB)
+#define TUNING_VOIP_GTALK_EAR_AIF1ADCL_VOL      0xEF // 400h // [VH04-1852] 0xEF (+14.625dB)
+#define TUNING_VOIP_GTALK_EAR_AIF1ADCR_VOL      0xEF // 401h
 
 // VoIP No Nxp Call (nxp_ctrl 2)(4Pole)
-#define TUNING_VOIP_NONXP_EAR_INPUTMIX_VOL      0x15 // 1Ah // [VF14-1816] VoIP 0x15 (+15.0dB)
-#define TUNING_VOIP_NONXP_EAR_AIF1ADCL_VOL      0xE7 // 400h // [VF14-1816] VoIP 0xE7 (+14.625dB)
+#define TUNING_VOIP_NONXP_EAR_INPUTMIX_VOL      0x15 // 1Ah // [VF14-1816] 0x15 (+15.0dB)
+#define TUNING_VOIP_NONXP_EAR_AIF1ADCL_VOL      0xE7 // 400h // [VF14-1816] 0xE7 (+14.625dB)
 #define TUNING_VOIP_NONXP_EAR_AIF1ADCR_VOL      0xE7 // 401h
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -676,7 +676,6 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 				if(wm8994->codec_state & (VOIP_CALL_ACTIVE)) {
 					printk(SND_KERN_DEBUG "[WM8994] turn off hpf in voip main mic...\n");
 #ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
 					wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
 #endif
 #ifdef FEATURE_VOIP_HPFILTER
@@ -788,7 +787,6 @@ void wm8994_disable_rec_path(struct snd_soc_codec *codec, enum mic_path rec_path
 				if(wm8994->codec_state & (VOIP_CALL_ACTIVE)) {
 					printk(SND_KERN_DEBUG "[WM8994] turn off hpf in voip ear mic...\n");
 #ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
 					wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
 #endif
 #ifdef FEATURE_VOIP_HPFILTER
@@ -2872,8 +2870,7 @@ void close_output_path_all(struct snd_soc_codec *codec)
 	val &= ~(WM8994_AIF1DAC_BOOST_MASK);
 	wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 
-#ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
+#ifdef FEATURE_VOIP_EQ
 	// 481H // 480H // AIF1_DAC1_EQ_GAIN clear
 	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x6318);
 	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x6300);
@@ -2948,11 +2945,11 @@ void wm8994_set_voipcall_receiver(struct snd_soc_codec *codec)
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
-#ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
+#ifdef FEATURE_VOIP_EQ
+	/* DO NOT USE EQ in VoIP RCV Path*/
 	// 481H // 480H // AIF1_DAC1_EQ_GAIN set
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x9600); // 481H //
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0199); // 480H //
+	//wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x6300); // 481H //
+	//wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0019); // 480H //
 #endif
 
 	// 2DH // DAC1L_TO_HPOUT1L set
@@ -3082,14 +3079,13 @@ void wm8994_set_voipcall_receiver_mic(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_INPUT_MIXER_2, val);
 
 #ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
 	/* DRC Sequence - RCV table // [DJ05-2239] // disable DRC and EQ */
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
-	wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0355); // 444h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x03ED); // 443h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0C02); // 442h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0811); // 441h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BA); // 440h // DRC1 NG enable
+	//wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
+	//wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0355); // 444h //
+	//wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x03ED); // 443h //
+	//wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0C02); // 442h //
+	//wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0811); // 441h //
+	//wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BA); // 440h // DRC1 NG enable
 #endif
 #ifdef FEATURE_VOIP_HPFILTER
 	// 410H // AIF1 ADC1 Filters // AIF1 ADC1 hi-path filter on
@@ -3240,11 +3236,11 @@ void wm8994_set_voipcall_headset(struct snd_soc_codec *codec)
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
-#ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
+#ifdef FEATURE_VOIP_EQ
+	/* EQ - VoIP 3Pole Path */
 	// 481H // 480H // AIF1_DAC1_EQ_GAIN set
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x9600); // 481H //
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0199); // 480H //
+	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x6300); // 481H //
+	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0019); // 480H //
 #endif
 
 	//Enable Dac1 and DAC2 and the Timeslot0 for AIF1
@@ -3392,14 +3388,18 @@ void wm8994_set_voipcall_headset_mic(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_INPUT_MIXER_2, val);
 
 #ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
-	/* DRC Sequence - 4Pole table // [DJ05-2239] // disable DRC and EQ */
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
-	wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0355); // 444h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x03ED); // 443h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0C02); // 442h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0811); // 441h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BA); // 440h // DRC1 NG enable
+	/* DRC Sequence - 4Pole table // [VH04-1852] // enable DRC for GTalk ONLY!!! */
+	if (wm8994->voip_nxp_ctrl == 1) {
+		DEBUG_LOG(" VoIP DRC enabled for GTalk ONLY!!!!");
+		wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
+		wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0256); // 444h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x0000); // 443h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0400); // 442h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0845); // 441h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BC); // 440h // DRC1 NG enable
+	} else {
+		DEBUG_LOG(" VoIP DRC disabled (This is not GTalk)");
+	}
 #endif
 #ifdef FEATURE_VOIP_HPFILTER
 	// 410H // AIF1 ADC1 Filters // AIF1 ADC1 hi-path filter on
@@ -3550,11 +3550,11 @@ void wm8994_set_voipcall_headphone(struct snd_soc_codec *codec)
 		wm8994_write(codec, WM8994_AIF1_CONTROL_2, val);
 	}
 
-#ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
+#ifdef FEATURE_VOIP_EQ
+	/* EQ - VoIP 3Pole Path */
 	// 481H // 480H // AIF1_DAC1_EQ_GAIN set
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x9600); // 481H //
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0199); // 480H //
+	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x6300); // 481H //
+	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0019); // 480H //
 #endif
 
 	//Enable Dac1 and DAC2 and the Timeslot0 for AIF1
@@ -3701,14 +3701,18 @@ void wm8994_set_voipcall_headphone_mic(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_INPUT_MIXER_2, val);
 
 #ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
-	/* DRC Sequence - 3Pole table // [DJ05-2239] // disable DRC and EQ */
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
-	wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0355); // 444h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x03ED); // 443h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0C02); // 442h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0811); // 441h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BA); // 440h // DRC1 NG enable
+	/* DRC Sequence - 3Pole table // [VH11-1055] // enable DRC for GTalk ONLY!!! */
+	if (wm8994->voip_nxp_ctrl == 1) {
+		DEBUG_LOG(" VoIP DRC enabled for GTalk ONLY!!!!");
+		wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
+		wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0256); // 444h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x0000); // 443h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0400); // 442h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0845); // 441h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BC); // 440h // DRC1 NG enable
+	} else {
+		DEBUG_LOG(" VoIP DRC disabled (This is not GTalk)");
+	}
 #endif
 #ifdef FEATURE_VOIP_HPFILTER
 	// 410H // AIF1 ADC1 Filters // AIF1 ADC1 hi-path filter on
@@ -3786,11 +3790,11 @@ void wm8994_set_voipcall_speaker(struct snd_soc_codec *codec)
 		wm8994_write(codec, WM8994_CLASSD, val);
 	}
 
-#ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
+#ifdef FEATURE_VOIP_EQ
+	/* DO NOT USE EQ in VoIP SPK Path*/
 	// 481H // 480H // AIF1_DAC1_EQ_GAIN set
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x9600); // 481H //
-	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0199); // 480H //
+	//wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x6300); // 481H //
+	//wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x0019); // 480H //
 #endif
 
 	// 610H // DAC1 Left VOL, Unmute
@@ -3932,14 +3936,18 @@ void wm8994_set_voipcall_speaker_mic(struct snd_soc_codec *codec)
 	wm8994_write(codec, WM8994_INPUT_MIXER_2, val);
 
 #ifdef FEATURE_VOIP_DRC
-	if this code enabled, build error
-	/* DRC Sequence - SPK table // [DJ05-2239] // disable DRC and EQ */
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
-	wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0355); // 444h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x03ED); // 443h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0C02); // 442h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0811); // 441h //
-	wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BA); // 440h // DRC1 NG enable
+	/* DRC Sequence - SPK table // [VH11-1055] // enable DRC for GTalk ONLY!!! */
+	if (wm8994->voip_nxp_ctrl == 1) {
+		DEBUG_LOG(" VoIP DRC enabled for GTalk ONLY!!!!");
+		wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x0098); // 440h // DRC disable
+		wm8994_write(codec, WM8994_AIF1_DRC1_5, 0x0210); // 444h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_4, 0x0439); // 443h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_3, 0x0418); // 442h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_2, 0x0850); // 441h //
+		wm8994_write(codec, WM8994_AIF1_DRC1_1, 0x01BC); // 440h // DRC1 NG enable
+	} else {
+		DEBUG_LOG(" VoIP DRC disabled (This is not GTalk)");
+	}
 #endif
 #ifdef FEATURE_VOIP_HPFILTER
 	// 410H // AIF1 ADC1 Filters // AIF1 ADC1 hi-path filter on

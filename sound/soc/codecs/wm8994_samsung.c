@@ -549,6 +549,12 @@ static int wm8994_set_playback_path(struct snd_kcontrol *kcontrol,
 
 	audio_ctrl_mic_bias_gpio(codec, 'D');
 
+#ifdef FEATURE_VOIP_EQ
+	// 481H // 480H // AIF1_DAC1_EQ_GAIN clear
+	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_1, 0x6318);
+	wm8994_write(codec, WM8994_AIF1_DAC1_EQ_GAINS_2, 0x6300);
+#endif
+
 	wm8994->cur_path = path_num;
 	wm8994->universal_playback_path[wm8994->cur_path](codec);
 

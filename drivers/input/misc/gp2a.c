@@ -547,7 +547,7 @@ static ssize_t proxsensor_factory_mode_store(struct device *dev,
 	mutex_unlock(&gp2a->power_lock);
 	return size;
 }
-static DEVICE_ATTR(proxsensor_factory_mode,0644, proxsensor_factory_mode_show, 
+static DEVICE_ATTR(proxsensor_factory_mode,0664, proxsensor_factory_mode_show, 
 	proxsensor_factory_mode_store);
 
 static DEVICE_ATTR(gp2asensor_i2c_state,0644, gp2asensor_i2c_state_show, NULL);

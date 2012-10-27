@@ -37,7 +37,8 @@ extern struct snd_soc_dai wm8994_dai;
 #define SND_KERN_DEBUG         KERN_DEBUG
 
 /* For VoIP */
-//#define FEATURE_VOIP_DRC // DRC Feature disabled
+#define FEATURE_VOIP_EQ // EQ Feature disabled
+#define FEATURE_VOIP_DRC // DRC Feature enabled for GTalk Only
 #define FEATURE_VOIP_HPFILTER // High Pass Filter enabled
 
 /*
